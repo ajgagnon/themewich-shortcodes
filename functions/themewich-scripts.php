@@ -100,9 +100,11 @@ if (!function_exists('themewich_print_accordion_script')) :
 		global $add_accordion;
 		if ( ! $add_accordion ) { return; }
 
-		wp_print_scripts('jquery-ui-core');
-		wp_print_scripts('jquery-ui-widget');
-		wp_print_scripts('jquery-ui-accordion');
+		wp_dequeue_script('themewich-shortcodes');
+		wp_enqueue_script('jquery-ui-core');	
+		wp_enqueue_script('jquery-ui-widget');
+		wp_enqueue_script('jquery-ui-accordion');
+		wp_enqueue_script('themewich-shortcodes');
 
 	}
 	add_action('wp_footer', 'themewich_print_accordion_script');
