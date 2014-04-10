@@ -13,7 +13,7 @@
  * Register and Localize JS
  * @since  v1.1
  */
-function themewich_register_js() {
+function themewich_register_shortcodes_js() {
 	wp_enqueue_script( 'jquery' );
 	wp_localize_script( 'jquery', 'themewichShortcodesVars', array('template_url' => plugin_dir_url( realpath(dirname(__FILE__) . '/..') ) ) );
 }
