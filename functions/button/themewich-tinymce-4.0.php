@@ -15,9 +15,9 @@
  */
 function themewich_register_shortcodes_js() {
 	wp_enqueue_script( 'jquery' );
-	wp_localize_script( 'jquery', 'themewichShortcodesVars', array('template_url' => plugin_dir_url( realpath(dirname(__FILE__) . '/..') ) ) );
+	wp_localize_script( 'jquery', 'themewichShortcodesVars', array('template_url' => plugin_dir_url( dirname(__DIR__) ) ) );
 }
-add_action( 'admin_init', 'themewich_register_js' );
+add_action( 'admin_init', 'themewich_register_shortcodes_js' );
 
 /** 
  * Add Scripts to Correct Admin Pages
