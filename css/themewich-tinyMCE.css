@@ -1,3 +1,6 @@
+.themewich-dialog-box {
+	padding: 10px;
+}
 .themewich-dialog-box div { 
 	padding: 5px 0; 
 }
@@ -53,6 +56,7 @@
 	text-decoration: none;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.1);
 	margin-bottom: 5px;
+	height:auto;
 
 }
 .themewich-dialog-box #insert:hover {
@@ -107,36 +111,21 @@
 
 .themewich-dialog-box span.dialog-section h3 {
 	font-size: 15px;
-	font-family: 'Georgia', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-weight: normal;
-	padding: 7px 10px;
+	padding: 10px 12px;
 	margin: 0;
 	line-height: 1;
-	border:1px solid #dcdcdc;
-	-webkit-border-top-left-radius: 3px;
-	-webkit-border-top-right-radius: 3px;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-	border-bottom-color: #dfdfdf;
-	text-shadow: #fff 0 1px 0;
-	-webkit-box-shadow: 0 1px 0 #fff;
-	box-shadow: 0 1px 0 #fff;
-	color: #464646;
-	background: #f1f1f1;
-	background-image: -webkit-gradient(linear,left bottom,left top,from(#e3e3e3),to(#f9f9f9));
-	background-image: -webkit-linear-gradient(bottom,#e3e3e3,#f9f9f9);
-	background-image: -moz-linear-gradient(bottom,#e3e3e3,#f9f9f9);
-	background-image: -o-linear-gradient(bottom,#e3e3e3,#f9f9f9);
-	background-image: linear-gradient(to top,#e3e3e3,#f9f9f9);
+	color: #fff;
+	background: #222;
 	font-weight:normal;
 }
 a.remover {
 	display:block;
-	text-indent:-999999px;
-	background:url(../images/toggle-x.png) center no-repeat;
-	width:10px;
-	height:10px;
-	margin-top:3px;
+	font-family: 'Open Sans', sans-serif;
+	color:#fff;
+	font-weight: bold;
+	text-decoration: none;
 }
 .feature-section {
 	display: block;
@@ -154,8 +143,9 @@ a.remover {
 	margin-bottom:0;
 }
 .themewich-dialog-box .feature-section a.remover {
-	margin-top: 13px;
+	margin-top: 8px;
 	margin-right: 8px;
+	color: #000;
 }
 .themewich-dialog-box.wider select {
 	width: 75%;
