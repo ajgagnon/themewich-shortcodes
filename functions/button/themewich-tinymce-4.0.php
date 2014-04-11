@@ -2,7 +2,7 @@
 /**
  * This file loads the tinymce dropdown for version 4.0
  * @package Themewich Shortcodes
- * @since 1.1
+ * @since 1.2
  * @author Andre Gagnon
  * @link http://themewich.com
  * @License: GNU General Public License version 3.0

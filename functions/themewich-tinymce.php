@@ -2,7 +2,7 @@
 /**
  * This file loads the tinymce dropdown
  * @package Themewich Shortcodes
- * @since 1.1
+ * @since 1.2
  * @author Andre Gagnon
  * @link http://themewich.com
  * @License: GNU General Public License version 3.0
@@ -12,8 +12,8 @@
 global $tinymce_version; // Get tinymce version
 
 /** 
- * Translatable Strings in tinyMCE dialog box
- * @since  v1.0
+ * New TinyMCE Compatibility
+ * @since  v1.2
  */
 if ( version_compare( $tinymce_version, '4021-20140407' ) >= 0 ) { 
 	require_once( dirname(__FILE__) . '/button/themewich-tinymce-4.0.php' ); // MCE at least 4.0
