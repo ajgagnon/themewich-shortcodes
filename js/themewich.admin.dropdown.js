@@ -15,6 +15,7 @@
                 {text: 'Accordion', value: 'accordion_popup', width: '500', height: '450'},
                 {text: 'Button', value: 'button_popup', width: '250', height: '350'},
                 {text: 'Column', value: 'column_popup', width: '250', height: '180'},
+                {text: 'Divider', value: 'divider'},
                 {text: 'Lightbox', value: 'lightbox_popup', width: '500', height: '370'},
                 {text: 'Posts', value: 'posts_popup', width: '250', height: '375'},
                 {text: 'Pricing Tabe', value: 'pricing_popup', width: '500', height: '715'},
@@ -32,15 +33,19 @@
                 tooltip: 'Insert a Shortcode',
                 fixedWidth: true,
                 onselect: function(e) {
-                    // Open popup window
-                    editor.windowManager.open({
-                        file : themewichShortcodesVars.template_url + 'popups/' + e.control._value + '.php', // file that contains HTML for our modal window
-                        width : e.control._width, // size of our window
-                        height : e.control._height, // size of our window
-                        inline : 1
-                    }, {
-                        plugin_url : url
-                    });
+                    // Check for popup
+                    if (e.control._value == 'divider') {
+                        tinyMCE.activeEditor.selection.setContent('[tw-divider]' + tinyMCE.activeEditor.selection.getContent() + '[/tw-divider]');
+                    } else {
+                        editor.windowManager.open({ // Open popup window
+                            file : themewichShortcodesVars.template_url + 'popups/' + e.control._value + '.php', // file that contains HTML for our modal window
+                            width : e.control._width, // size of our window
+                            height : e.control._height, // size of our window
+                            inline : 1
+                        }, {
+                            plugin_url : url
+                        });
+                    }
                 },
                 menu: values,
             };

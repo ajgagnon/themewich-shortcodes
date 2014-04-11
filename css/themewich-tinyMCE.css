@@ -143,8 +143,9 @@ a.remover {
 	margin-bottom:0;
 }
 .themewich-dialog-box .feature-section a.remover {
-	margin-top: 13px;
+	margin-top: 8px;
 	margin-right: 8px;
+	color: #000;
 }
 .themewich-dialog-box.wider select {
 	width: 75%;

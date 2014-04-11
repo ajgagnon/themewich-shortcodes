@@ -15,7 +15,7 @@ class Themewich_TinyMCE_Buttons {
 			add_filter( 'mce_buttons', array(&$this,'register_button') );  // register button
 			wp_enqueue_script( 'jquery' );
 			// Localize directory
-			wp_localize_script( 'jquery', 'themewichShortcodesVars', array('template_url' => realpath(dirname(__FILE__) . '/..') ) );
+			wp_localize_script( 'jquery', 'themewichShortcodesVars', array('template_url' => plugin_dir_url(dirname(__DIR__)) ) );
 		}  
     }  
 	function add_plugin($plugin_array) {  
