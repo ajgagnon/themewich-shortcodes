@@ -25,9 +25,6 @@ add_action( 'admin_init', 'themewich_register_shortcodes_js' );
  */
 function themewich_add_tinymce() {
     global $typenow;
-    // only on Post Type: post and page
-    if( ! in_array( $typenow, array( 'post', 'page' ) ) )
-        return ;
 
     add_filter( 'mce_external_plugins', 'themewich_add_tinymce_plugin' );
     // Add to line 1 form WP TinyMCE
