@@ -55,7 +55,7 @@ if( !function_exists('themewich_button_shortcode') ) {
 
 		$color 				= ($color != '') ? ' custom ' . $color : '';
 		$size 				= ($size) ? ' '. $size : '';
-		$target 			= ($target == 'blank') ? ' target="_blank"' : '';
+		$target 			= ($target == 'blank' || $target == "_blank") ? ' target="_blank"' : '';
 
 		$backgroundstyle 	= ($background != '' || $text != '') ? ' style="' : '';
 		$backgroundstyle 	.= ($background != '') ? 'background:'.$background.';' : '';
