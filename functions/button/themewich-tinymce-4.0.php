@@ -15,7 +15,7 @@
  */
 function themewich_register_shortcodes_js() {
 	wp_enqueue_script( 'jquery' );
-	wp_localize_script( 'jquery', 'themewichShortcodesVars', array('template_url' => plugin_dir_url( dirname(__DIR__) ) ) );
+	wp_localize_script( 'jquery', 'themewichShortcodesVars', array('template_url' => TW_PLUGIN_DIR) );
 }
 add_action( 'admin_init', 'themewich_register_shortcodes_js' );
 
@@ -37,7 +37,7 @@ add_action( 'admin_head', 'themewich_add_tinymce' );
  * @since  v1.1
  */
 function themewich_add_tinymce_plugin( $plugin_array ) {
-    $plugin_array['themewich_shortcodes'] = plugins_url( '/js/themewich.admin.dropdown.js', realpath(dirname(__FILE__) . '/..') );
+    $plugin_array['themewich_shortcodes'] = TW_PLUGIN_DIR . 'js/themewich.admin.dropdown.js';
     // Print all plugin js path
     return $plugin_array;
 }
