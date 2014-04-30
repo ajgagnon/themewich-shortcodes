@@ -1,6 +1,7 @@
 /**
  * Creates Themewich shortcode dropdown and adds
- * example shorcodes to editor when clicked.
+ * example shorcodes to editor when clicked for 
+ * tinyMCE 3.0
  *
  * @since  v1.0
  */
@@ -13,7 +14,7 @@
                 ed.windowManager.open({
                     file : themewichShortcodesVars.template_url + 'popups/accordion_popup.php', // file that contains HTML for our modal window
                     width : 500 + parseInt(ed.getLang('accordion.delta_width', 0)), // size of our window
-                    height : 400 + parseInt(ed.getLang('accordion.delta_height', 0)), // size of our window
+                    height : 450 + parseInt(ed.getLang('accordion.delta_height', 0)), // size of our window
                     inline : 1
                 }, {
                     plugin_url : url
@@ -25,7 +26,7 @@
                 ed.windowManager.open({
                     file : themewichShortcodesVars.template_url + 'popups/button_popup.php', // file that contains HTML for our modal window
                     width : 250 + parseInt(ed.getLang('button.delta_width', 0)), // size of our window
-                    height : 325 + parseInt(ed.getLang('button.delta_height', 0)), // size of our window
+                    height : 350 + parseInt(ed.getLang('button.delta_height', 0)), // size of our window
                     inline : 1
                 }, {
                     plugin_url : url
@@ -37,7 +38,7 @@
                 ed.windowManager.open({
                     file : themewichShortcodesVars.template_url + 'popups/column_popup.php', // file that contains HTML for our modal window
                     width : 250 + parseInt(ed.getLang('button.delta_width', 0)), // size of our window
-                    height : 150 + parseInt(ed.getLang('button.delta_height', 0)), // size of our window
+                    height : 180 + parseInt(ed.getLang('button.delta_height', 0)), // size of our window
                     inline : 1
                 }, {
                     plugin_url : url
@@ -61,7 +62,7 @@
                 ed.windowManager.open({
                     file : themewichShortcodesVars.template_url + 'popups/lightbox_popup.php', // file that contains HTML for our modal window
                     width : 500 + parseInt(ed.getLang('button.delta_width', 0)), // size of our window
-                    height : 335 + parseInt(ed.getLang('button.delta_height', 0)), // size of our window
+                    height : 370 + parseInt(ed.getLang('button.delta_height', 0)), // size of our window
                     inline : 1
                 }, {
                     plugin_url : url
@@ -73,7 +74,7 @@
                 ed.windowManager.open({
                     file : themewichShortcodesVars.template_url + 'popups/posts_popup.php', // file that contains HTML for our modal window
                     width : 250 + parseInt(ed.getLang('button.delta_width', 0)), // size of our window
-                    height : 310 + parseInt(ed.getLang('button.delta_height', 0)), // size of our window
+                    height : 375 + parseInt(ed.getLang('button.delta_height', 0)), // size of our window
                     inline : 1
                 }, {
                     plugin_url : url
@@ -85,7 +86,7 @@
                 ed.windowManager.open({
                     file : themewichShortcodesVars.template_url + 'popups/pricing_popup.php', // file that contains HTML for our modal window
                     width : 500 + parseInt(ed.getLang('pricing.delta_width', 0)), // size of our window
-                    height : 700 + parseInt(ed.getLang('pricing.delta_height', 0)), // size of our window
+                    height : 715 + parseInt(ed.getLang('pricing.delta_height', 0)), // size of our window
                     inline : 1
                 }, {
                     plugin_url : url
@@ -97,7 +98,7 @@
                 ed.windowManager.open({
                     file : themewichShortcodesVars.template_url + 'popups/social_popup.php', // file that contains HTML for our modal window
                     width : 250 + parseInt(ed.getLang('button.delta_width', 0)), // size of our window
-                    height : 205 + parseInt(ed.getLang('button.delta_height', 0)), // size of our window
+                    height : 225 + parseInt(ed.getLang('button.delta_height', 0)), // size of our window
                     inline : 1
                 }, {
                     plugin_url : url
@@ -109,7 +110,7 @@
                 ed.windowManager.open({
                     file : themewichShortcodesVars.template_url + 'popups/tabs_popup.php', // file that contains HTML for our modal window
                     width : 500 + parseInt(ed.getLang('accordion.delta_width', 0)), // size of our window
-                    height : 400 + parseInt(ed.getLang('accordion.delta_height', 0)), // size of our window
+                    height : 445 + parseInt(ed.getLang('accordion.delta_height', 0)), // size of our window
                     inline : 1
                 }, {
                     plugin_url : url
@@ -121,7 +122,7 @@
                 ed.windowManager.open({
                     file : themewichShortcodesVars.template_url + 'popups/toggle_popup.php', // file that contains HTML for our modal window
                     width : 500 + parseInt(ed.getLang('button.delta_width', 0)), // size of our window
-                    height : 335 + parseInt(ed.getLang('button.delta_height', 0)), // size of our window
+                    height : 375 + parseInt(ed.getLang('button.delta_height', 0)), // size of our window
                     inline : 1
                 }, {
                     plugin_url : url
@@ -193,4 +194,4 @@
     
     });
     tinymce.PluginManager.add("themewich_shortcodes", tinymce.plugins.themewichShortcodeMce);
-})();  
+})();
