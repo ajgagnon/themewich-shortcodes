@@ -30,7 +30,6 @@ if( !function_exists ('themewich_shortcodes_scripts') ) {
 
 		// Register and load shortcodes custom script
 		wp_register_script('themewich-shortcodes', plugins_url( 'js/themewich.shortcodes.js', dirname(__FILE__) ), 'jquery', '1.0', true);
-		wp_register_script('infinite', plugins_url( '/js/jquery.infinitescroll.min.js', dirname(__FILE__) ), 'jquery', '1.5.100504', true);
 		wp_register_script('magnificpopup', plugins_url( '/js/jquery.magnific-popup.min.js', dirname(__FILE__) ), 'jquery', '0.9.4', true);
 		wp_register_script('themewich-tabs', plugins_url( '/js/jquery.themewichtabs.min.js', dirname(__FILE__) ), 'jquery', '1.0', true);
 
@@ -68,7 +67,6 @@ if (!function_exists('themewich_print_isotope_script')) :
 		if ( ! $add_isotope ) { return; }
 	
 		wp_print_scripts('isotope');
-		wp_print_scripts('infinite');
 	}
 	add_action('wp_footer', 'themewich_print_isotope_script');
 endif;

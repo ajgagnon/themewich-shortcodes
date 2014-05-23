@@ -78,7 +78,7 @@ jQuery(document).ready(function($){
 	/*-----------------------------------------------------------------------------------*/
 
 	if (jQuery.isFunction(jQuery.fn.accordion)) {
-		jQuery(".tw-accordion").accordion({autoHeight: false});
+		jQuery(".tw-accordion").accordion({heightStyle: "content"});
 	}
 
 
