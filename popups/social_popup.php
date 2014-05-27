@@ -54,12 +54,12 @@ tinyMCEPopup.onInit.add(<?php echo $type; ?>Dialog.init, <?php echo $type; ?>Dia
 					<option value="facebook">Facebook</option>
 					<option value="dribbble">Dribbble</option>
 					<option value="google">Google+</option>
+					<option value="instagram">Instagram</option>
 					<option value="linkedin">Linkedin</option>
 					<option value="pinterest">Pinterest</option>
 					<option value="rss">RSS</option>
 					<option value="stumble">Stumble</option>
 					<option value="vimeo">Vimeo</option>
-					<option value="yelp">Yelp</option>
 					<option value="youtube">Youtube</option>						
 				</select>
 			</div><br style="clear:both;" />

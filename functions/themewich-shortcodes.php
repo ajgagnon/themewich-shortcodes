@@ -487,7 +487,7 @@ if( !function_exists('themewich_social_shortcode') ) {
 			'rel'    => '',
 			'class'  => '',
 		), $atts ) );
-		return '<a href="' . $url . '" class="tw-social-icon '. $class .'" target="_'.$target.'" title="'. $title .'" rel="'. $rel .'"><img src="'. plugins_url( 'images/icons/' , dirname(__FILE__) ) . $icon .'.png" alt="'. $icon .'" /></a>';
+		return '<a href="' . $url . '" class="tw-social-icon '. $class .' '. $icon .'" target="_'.$target.'" title="'. $title .'" rel="'. $rel .'"></a>';
 	}
 	add_shortcode('tw-social', 'themewich_social_shortcode');
 }

@@ -12,27 +12,29 @@
 
 /**
  * Register and Load Shortcodes CSS
+ * 
  * @since v1.0
  */
-if( !function_exists('themewich_shortcode_styles') ) {
+if( ! function_exists('themewich_shortcode_styles') ) {
 	function themewich_shortcode_styles() {
 		wp_register_style('themewich-shortcodes', plugins_url( 'css/themewich-shortcodes.css' , dirname(__FILE__) ));
-		wp_enqueue_style( 'themewich-shortcodes');
+		wp_enqueue_style( 'themewich-shortcodes' );
 	}
-	add_action('wp_print_styles', 'themewich_shortcode_styles');
+	add_action( 'wp_print_styles', 'themewich_shortcode_styles' );
 }
-
 
 if( !function_exists ('themewich_shortcodes_scripts') ) {
 	function themewich_shortcodes_scripts() {
 		// Load jquery if not already loaded
-		if (!wp_script_is('jquery')) wp_enqueue_script('jquery');
+		if ( ! wp_script_is('jquery') ) wp_enqueue_script('jquery');
 
 		// Register and load shortcodes custom script
+		wp_register_script('modernizr', plugins_url( 'js/modernizr.min.js', dirname(__FILE__) ), 'jquery', '2.8.2', false);
 		wp_register_script('themewich-shortcodes', plugins_url( 'js/themewich.shortcodes.js', dirname(__FILE__) ), 'jquery', '1.0', true);
 		wp_register_script('magnificpopup', plugins_url( '/js/jquery.magnific-popup.min.js', dirname(__FILE__) ), 'jquery', '0.9.4', true);
 		wp_register_script('themewich-tabs', plugins_url( '/js/jquery.themewichtabs.min.js', dirname(__FILE__) ), 'jquery', '1.0', true);
 
+		wp_enqueue_script('modernizr');
 		wp_enqueue_script('themewich-shortcodes');
 
 	    }
