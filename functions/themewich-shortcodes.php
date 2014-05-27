@@ -289,14 +289,16 @@ if( ! function_exists( 'themewich_posts_shortcode ') ) {
 
 			// Set the content if option is selected
 			if ($content == 'Yes' || $content == 'yes' || $content == 'show' ||  $content == 'Show') {
-				global $more; $more=0; 
-				$postcontent = get_the_excerpt();
+				global $more; $more=0;
 
-				if (!$postinfo) {
-					$postcontent = get_the_content(__('Read More', 'framework'));
+				$the_post = get_post(get_the_ID());
+
+				if ( preg_match( '/<!--more/', $the_post->post_content ) ) {
+					$postinfo .= apply_filters('the_content', get_the_content( __('Read More', 'themewich'), '<br />') );
+				} else {
+					$postinfo .= get_the_excerpt();
 				}
 
-				$postinfo .= apply_filters('the_content', $postcontent);
 			}
 
 			// Close postinfo
@@ -359,7 +361,7 @@ if( ! function_exists( 'themewich_toggle_shortcode ') ) {
 		), $atts ) );
 		
 		// Display the Toggle
-		return '<div class="tw-toggle '. $class .'"><h3 class="tw-toggle-trigger">'. $title .'</h3><div class="tw-toggle-container">' . do_shortcode($content) . '</div></div>';
+		return '<div class="tw-toggle '. $class .'"><div class="tw-toggle-trigger">'. $title .'</div><div class="tw-toggle-container">' . do_shortcode($content) . '</div></div>';
 	}
 	add_shortcode( 'tw-toggle', 'themewich_toggle_shortcode' );
 }
@@ -393,7 +395,7 @@ if( ! function_exists( 'themewich_accordion_section_shortcode ') ) {
 			'title' => 'Title',
 			'class' => '',
 		), $atts ) );  
-	   return '<h3 class="tw-accordion-trigger '. $class .'"><a href="#">'. $title .'</a></h3><div>' . do_shortcode($content) . '</div>';
+	   return '<div class="tw-accordion-trigger '. $class .'"><a href="#">'. $title .'</a></div><div>' . do_shortcode($content) . '</div>';
 	}
 	add_shortcode( 'tw-accordion-section', 'themewich_accordion_section_shortcode' );
 }

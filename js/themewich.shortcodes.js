@@ -42,6 +42,7 @@ jQuery.noConflict(); // Set jQuery to NoConflict Mode
 			type:'image', 
 			closeBtnInside: true,
 			mainClass: 'mfp-zoom-in',
+			tLoading: '<div class="tw-loading"></div>',
 			removalDelay: 500, //delay removal by X to allow out-animation
 			image: {
 				tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
@@ -77,6 +78,7 @@ jQuery.noConflict(); // Set jQuery to NoConflict Mode
 	    lightbox.el.inlineselectors.magnificPopup({
 	      disableOn: 700,
 	      closeBtnInside: true,
+	      tLoading: '<div class="tw-loading"></div>',
 	      type: 'iframe',
 	      mainClass: 'mfp-fade',
 	      removalDelay: 160,
