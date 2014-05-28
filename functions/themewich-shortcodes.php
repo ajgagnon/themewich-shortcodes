@@ -9,19 +9,17 @@
  * @License URI: http://www.gnu.org/licenses/gpl-3.0.html
  */
 
-
 /*
  * Allow Shortcodes in Widgets
  * @since v1.0
  */
-add_filter('widget_text', 'do_shortcode');
-
+add_filter( 'widget_text', 'do_shortcode' );
 
 /*
  * Fix Shortcodes
  * @since v1.0
  */
-if( !function_exists('themewich_fix_shortcodes') ) {
+if( ! function_exists( 'themewich_fix_shortcodes' ) ) {
 	function themewich_fix_shortcodes($content){   
 		$array = array (
 			'<p>[' => '[', 
@@ -33,15 +31,14 @@ if( !function_exists('themewich_fix_shortcodes') ) {
 		$content = strtr($content, $array);
 		return $content;
 	}
-	add_filter('the_content', 'themewich_fix_shortcodes');
+	add_filter( 'the_content', 'themewich_fix_shortcodes' );
 }
-
 
 /**
  * Button Shortcode
  * @since v1.0
  */
-if( !function_exists('themewich_button_shortcode') ) {
+if( ! function_exists( 'themewich_button_shortcode' ) ) {
 	function themewich_button_shortcode( $atts, $content = null ) {
 	   extract(shortcode_atts(array(
 	   'link'	=>  '#',
@@ -53,10 +50,12 @@ if( !function_exists('themewich_button_shortcode') ) {
 	   'class' => ''
 	   ), $atts));
 
+	    // Sanitize options
 		$color 				= ($color != '') ? ' custom ' . $color : '';
 		$size 				= ($size) ? ' '. $size : '';
 		$target 			= ($target == 'blank' || $target == "_blank") ? ' target="_blank"' : '';
 
+		// Background Style
 		$backgroundstyle 	= ($background != '' || $text != '') ? ' style="' : '';
 		$backgroundstyle 	.= ($background != '') ? 'background:'.$background.';' : '';
 		$backgroundstyle 	.= ($text != '') ? ' color:'.$text.';' : '';
@@ -67,15 +66,14 @@ if( !function_exists('themewich_button_shortcode') ) {
 
 	   return $out;
 	}
-	add_shortcode('tw-button', 'themewich_button_shortcode');
+	add_shortcode( 'tw-button', 'themewich_button_shortcode' );
 }
-
 
 /**
  * Lightbox Shortcode
  * @since v1.0
  */
-if( !function_exists('themewich_lightbox_shortcode') ) {
+if( ! function_exists( 'themewich_lightbox_shortcode' ) ) {
 	function themewich_lightbox_shortcode( $atts, $content = null ) {
 	    extract(shortcode_atts(array(
 	    'link'	=> '#',
@@ -85,18 +83,18 @@ if( !function_exists('themewich_lightbox_shortcode') ) {
 		$out = '<a href="' .$link. '" class="tw-lightbox ' . $class . '">' .do_shortcode($content). '</a>';
 
 		// Add lightbox script
-		global $add_lightbox; $add_lightbox = true;
+		global $tw_add_lightbox; $tw_add_lightbox = true;
+
 	    return $out;
 	}
-	add_shortcode('tw-lightbox', 'themewich_lightbox_shortcode');
+	add_shortcode( 'tw-lightbox', 'themewich_lightbox_shortcode' );
 }
-
 
 /**
  * Divider Shortcode
  * @since v1.0
  */
-if( !function_exists('themewich_divider_shortcode') ) {
+if( ! function_exists( 'themewich_divider_shortcode' ) ) {
 	function themewich_divider_shortcode( $atts, $content = null ) {
 	    extract(shortcode_atts(array(
 	    	'class' => ''
@@ -110,15 +108,14 @@ if( !function_exists('themewich_divider_shortcode') ) {
 
 	    return $out;
 	}
-	add_shortcode('tw-divider', 'themewich_divider_shortcode');
+	add_shortcode( 'tw-divider', 'themewich_divider_shortcode' );
 }
-
 
 /**
  * Tabs Shortcode
  * @since v1.0
  */
-if( !function_exists('themewich_tabs_shortcode') ) {
+if( ! function_exists('themewich_tabs_shortcode ') ) {
 	function themewich_tabs_shortcode( $atts, $content = null ) {
 		extract(shortcode_atts(array(
 	    'class' => ''
@@ -150,18 +147,17 @@ if( !function_exists('themewich_tabs_shortcode') ) {
 		$out .= '<ul class="tabs-content">'. do_shortcode($content) .'</ul><div class="clear"></div></div>';
 		
 		// Add tabs script
-		global $add_tabs; $add_tabs = true;
+		global $tw_add_tabs; $tw_add_tabs = true;
 		return $out;
 	}
-	add_shortcode('tw-tabs', 'themewich_tabs_shortcode');
+	add_shortcode( 'tw-tabs', 'themewich_tabs_shortcode' );
 }
-
 
 /**
  * Tab Shortcode
  * @since v1.0
  */
-if( !function_exists('themewich_tab_shortcode') ) {
+if( ! function_exists( 'themewich_tab_shortcode ') ) {
 	function themewich_tab_shortcode( $atts, $content = null ) {
 		extract(shortcode_atts(array(
 		'class' => ''
@@ -180,15 +176,14 @@ if( !function_exists('themewich_tab_shortcode') ) {
 		
 		return $out;
 	}
-	add_shortcode('tw-tab', 'themewich_tab_shortcode');
+	add_shortcode( 'tw-tab', 'themewich_tab_shortcode' );
 }
-
 
 /**
  * Posts Shortcode
  * @since v1.0
  */
-if( !function_exists('themewich_posts_shortcode') ) {
+if( ! function_exists( 'themewich_posts_shortcode ') ) {
 	function themewich_posts_shortcode( $atts, $content = null ) {
 	    extract(shortcode_atts(array(
 	    'number'	=> '4',
@@ -294,14 +289,16 @@ if( !function_exists('themewich_posts_shortcode') ) {
 
 			// Set the content if option is selected
 			if ($content == 'Yes' || $content == 'yes' || $content == 'show' ||  $content == 'Show') {
-				global $more; $more=0; 
-				$postcontent = get_the_excerpt();
+				global $more; $more=0;
 
-				if (!$postinfo) {
-					$postcontent = get_the_content(__('Read More', 'framework'));
+				$the_post = get_post(get_the_ID());
+
+				if ( preg_match( '/<!--more/', $the_post->post_content ) ) {
+					$postinfo .= apply_filters('the_content', get_the_content( __('Read More', 'themewich'), '<br />') );
+				} else {
+					$postinfo .= get_the_excerpt();
 				}
 
-				$postinfo .= apply_filters('the_content', $postcontent);
 			}
 
 			// Close postinfo
@@ -344,20 +341,19 @@ if( !function_exists('themewich_posts_shortcode') ) {
 		$out .= '<div class="clear"></div></div></div>';
 
 		// Add isotope script
-		global $add_isotope; $add_isotope = true;
+		global $tw_add_isotope; $tw_add_isotope = true;
 
 		// Return html string
 	    return $out;
 	}
-	add_shortcode('tw-posts', 'themewich_posts_shortcode');
+	add_shortcode( 'tw-posts', 'themewich_posts_shortcode' );
 }
-
 
 /**
  * Toggle Shortcode
  * @since v1.0
  */
-if( !function_exists('themewich_toggle_shortcode') ) {
+if( ! function_exists( 'themewich_toggle_shortcode ') ) {
 	function themewich_toggle_shortcode( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 			'title' => 'Toggle Title',
@@ -365,24 +361,23 @@ if( !function_exists('themewich_toggle_shortcode') ) {
 		), $atts ) );
 		
 		// Display the Toggle
-		return '<div class="tw-toggle '. $class .'"><h3 class="tw-toggle-trigger">'. $title .'</h3><div class="tw-toggle-container">' . do_shortcode($content) . '</div></div>';
+		return '<div class="tw-toggle '. $class .'"><div class="tw-toggle-trigger">'. $title .'</div><div class="tw-toggle-container">' . do_shortcode($content) . '</div></div>';
 	}
-	add_shortcode('tw-toggle', 'themewich_toggle_shortcode');
+	add_shortcode( 'tw-toggle', 'themewich_toggle_shortcode' );
 }
-
 
 /**
  * Accordion Shortcode
  * @since v1.0
  */
-if( !function_exists('themewich_accordion_main_shortcode') ) {
+if( ! function_exists( 'themewich_accordion_main_shortcode ') ) {
 	function themewich_accordion_main_shortcode( $atts, $content = null  ) {
 		extract( shortcode_atts( array(
 			'class' => ''
 		), $atts ) );
 
-		global $add_accordion;
-		$add_accordion = true;
+		global $tw_add_accordion;
+		$tw_add_accordion = true;
 		
 		// Display the accordion	
 		return '<div class="tw-accordion '. $class .'">' . do_shortcode($content) . '</div>';
@@ -390,28 +385,26 @@ if( !function_exists('themewich_accordion_main_shortcode') ) {
 	add_shortcode( 'tw-accordion', 'themewich_accordion_main_shortcode' );
 }
 
-
 /**
  * Accordion Section Shortcode
  * @since v1.0
  */
-if( !function_exists('themewich_accordion_section_shortcode') ) {
+if( ! function_exists( 'themewich_accordion_section_shortcode ') ) {
 	function themewich_accordion_section_shortcode( $atts, $content = null  ) {
 		extract( shortcode_atts( array(
 			'title' => 'Title',
 			'class' => '',
 		), $atts ) );  
-	   return '<h3 class="tw-accordion-trigger '. $class .'"><a href="#">'. $title .'</a></h3><div>' . do_shortcode($content) . '</div>';
+	   return '<div class="tw-accordion-trigger '. $class .'"><a href="#">'. $title .'</a></div><div>' . do_shortcode($content) . '</div>';
 	}
 	add_shortcode( 'tw-accordion-section', 'themewich_accordion_section_shortcode' );
 }
-
 
 /**
  * Pricing Table Shortcode
  * @since v1.0
  */
-if( !function_exists('themewich_pricing_table_shortcode') ) {
+if( ! function_exists( 'themewich_pricing_table_shortcode ') ) {
 	function themewich_pricing_table_shortcode( $atts, $content = null  ) {
 		extract( shortcode_atts( array(
 			'class' => ''
@@ -425,7 +418,7 @@ if( !function_exists('themewich_pricing_table_shortcode') ) {
  * Pricing Shortcode
  * @since v1.0
  */
-if( !function_exists('themewich_pricing_shortcode') ) {
+if( ! function_exists( 'themewich_pricing_shortcode ') ) {
 	function themewich_pricing_shortcode( $atts, $content = null  ) {
 		extract( shortcode_atts( array(
 			'size'                 => 'one-half',
@@ -477,7 +470,7 @@ if( !function_exists('themewich_pricing_shortcode') ) {
  * @since v1.0
  * 
  */
-if( !function_exists('themewich_social_shortcode') ) {
+if( ! function_exists( 'themewich_social_shortcode ') ) {
 	function themewich_social_shortcode( $atts ){   
 		extract( shortcode_atts( array(
 			'icon'   => 'twitter',
@@ -487,9 +480,9 @@ if( !function_exists('themewich_social_shortcode') ) {
 			'rel'    => '',
 			'class'  => '',
 		), $atts ) );
-		return '<a href="' . $url . '" class="tw-social-icon '. $class .'" target="_'.$target.'" title="'. $title .'" rel="'. $rel .'"><img src="'. plugins_url( 'images/icons/' , dirname(__FILE__) ) . $icon .'.png" alt="'. $icon .'" /></a>';
+		return '<a href="' . $url . '" class="tw-social-icon '. $class .' '. $icon .'" target="_'.$target.'" title="'. $title .'" rel="'. $rel .'"></a>';
 	}
-	add_shortcode('tw-social', 'themewich_social_shortcode');
+	add_shortcode( 'tw-social', 'themewich_social_shortcode' );
 }
 	
 	
@@ -498,7 +491,7 @@ if( !function_exists('themewich_social_shortcode') ) {
  * @since v1.0
  * 
  */
-if( !function_exists('themewich_column_shortcode') ) {
+if( ! function_exists( 'themewich_column_shortcode ') ) {
 	function themewich_column_shortcode( $atts, $content = null ){
 		extract( shortcode_atts( array(
 			'width'    => 'one-half',
@@ -515,7 +508,7 @@ if( !function_exists('themewich_column_shortcode') ) {
 		return $out;
 
 	}
-	add_shortcode('tw-column', 'themewich_column_shortcode');
+	add_shortcode( 'tw-column', 'themewich_column_shortcode' );
 }
 
 /*
@@ -523,7 +516,7 @@ if( !function_exists('themewich_column_shortcode') ) {
  * @since v1.1
  * 
  */
-if( !function_exists('themewich_parallax_images') ) {
+if( ! function_exists( 'themewich_parallax_images ') ) {
 	function themewich_parallax_images( $atts, $content = null ){
 		extract( shortcode_atts( array(
 			'image'      => '',
@@ -543,7 +536,7 @@ if( !function_exists('themewich_parallax_images') ) {
             
             if ($lightbox && ($lightbox == 'yes' || $lightbox == 'Yes' ) ) {   
                 // Add lightbox script
-                global $add_lightbox; $add_lightbox = true;
+                global $tw_add_lightbox; $tw_add_lightbox = true;
                 $out .= ' class="tw-lightbox"';
             }
             
@@ -576,5 +569,5 @@ if( !function_exists('themewich_parallax_images') ) {
 		return $out;
 
 	}
-	add_shortcode('tw-parallax', 'themewich_parallax_images');
+	add_shortcode( 'tw-parallax', 'themewich_parallax_images' );
 }

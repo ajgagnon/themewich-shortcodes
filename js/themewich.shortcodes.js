@@ -1,149 +1,165 @@
+jQuery.noConflict(); // Set jQuery to NoConflict Mode
+
 /**
  * Plugin Javascript
  */
-jQuery(document).ready(function($){
+(function( $ ){
+	"use strict";
 
-	/*-----------------------------------------------------------------------------------*/
-	/* Lightbox Initialize
-	/*-----------------------------------------------------------------------------------*/
-	$images = $('a.tw-lightbox[href*=".jpg"], a.tw-lightbox[href*="jpeg"], a.tw-lightbox[href*=".png"], a.tw-lightbox[href*=".gif"]');
-	$notImages = $('a.tw-lightbox').not($images);
+	/**
+	 * All lightbox functions for the plugin
+	 * @since v1.3
+	 * (c) Copyright 2013 Andre Gagnon - http://themewich.com
+	 */
+	$.fn.themewichLightBox = function(options) {
 
-	$images.magnificPopup({
-		type:'image', 
-		closeBtnInside: true,
-		mainClass: 'mfp-zoom-in',
-		removalDelay: 500, //delay removal by X to allow out-animation
-		image: {
-			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-			titleSrc: function(item) {
-			  return item.el.find('img').attr('title');				  
+		if(this.length == 0) return this; // if nothing supplied
+
+		var defaults = {
+			notimages: true
+		}
+
+		// create a namespace
+		var lightbox 	= {};
+
+		var el = this;
+		lightbox.el = this;
+
+		// merge supplied options with the defaults
+		lightbox.settings = $.extend({}, defaults, options);
+		
+		lightbox.el.imageselectors = $(lightbox.el.selector + '[href*=".jpg"]')
+			.add(lightbox.el.selector + '[href*="jpeg"]')
+			.add(lightbox.el.selector + '[href*=".png"]')
+			.add(lightbox.el.selector + '[href*=".gif"]');
+
+		if (lightbox.settings.notimages) {
+			lightbox.el.inlineselectors = lightbox.el.not(lightbox.el.imageselectors);
+		}
+
+		// Lightbox popups
+		lightbox.el.imageselectors.magnificPopup({
+			type:'image', 
+			closeBtnInside: true,
+			mainClass: 'mfp-zoom-in',
+			tLoading: '<div class="tw-loading"></div>',
+			removalDelay: 500, //delay removal by X to allow out-animation
+			image: {
+				tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+				titleSrc: function(item) {
+				  return item.el.find('img').attr('title');				  
+				},
+				 markup: '<div class="mfp-figure">'+
+	            '<div class="mfp-close"></div>'+
+	            '<div class="mfp-img"></div>'+
+	            '<div class="mfp-bottom-bar">'+
+	              '<div class="mfp-title-wrapper"><div class="mfp-title"></div></div>'+
+	              '<div class="mfp-counter"></div>'+
+	            '</div>'+
+	          '</div>' // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
 			},
-			 markup: '<div class="mfp-figure">'+
-            '<div class="mfp-close"></div>'+
-            '<div class="mfp-img"></div>'+
-            '<div class="mfp-bottom-bar">'+
-              '<div class="mfp-title-wrapper"><div class="mfp-title"></div></div>'+
-              '<div class="mfp-counter"></div>'+
-            '</div>'+
-          '</div>' // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
-		},
 
-		callbacks: {
-			imageLoadComplete: function() {
-			  var self = this;
-			  setTimeout(function() {
-			    self.wrap.addClass('mfp-image-loaded');
-			  }, 16);
-			},
-			close: function() {
-			  this.wrap.removeClass('mfp-image-loaded');
-			}
-		},
-		closeOnContentClick: true,
-		midClick: true
-	});
-
-    $notImages.magnificPopup({
-      disableOn: 700,
-      closeBtnInside: true,
-      type: 'iframe',
-      mainClass: 'mfp-fade',
-      removalDelay: 160,
-      preloader: false,
-
-      fixedContentPos: false
-    });
-
-
-	/*-----------------------------------------------------------------------------------*/
-	/* Tabs
-	/*-----------------------------------------------------------------------------------*/
-	if ($.fn.themewichTabs) {
-		$('ul.tw-tabs').themewichTabs();
-	}
-
-
-	/*-----------------------------------------------------------------------------------*/
-	/* Toggle
-	/*-----------------------------------------------------------------------------------*/
-	$(".tw-toggle-trigger").click(function(){
-		$(this).toggleClass("active").next().slideToggle("fast");
-		return false;
-	});
-
-
-	/*-----------------------------------------------------------------------------------*/
-	/* Accordion
-	/*-----------------------------------------------------------------------------------*/
-
-	if (jQuery.isFunction(jQuery.fn.accordion)) {
-		jQuery(".tw-accordion").accordion({autoHeight: false});
-	}
-
-
-			jQuery('.tw-postshortcode .isotopecontainer').each(function($) {
-
-				var $this = jQuery(this),
-		  	 	 	columnNumber = $this.attr('data-value'),
-		  	 	 	isoBrick = jQuery('.isobrick'),
-		  	 	 	$colnum2;
-
-		  	 	// Remove margins
-				isoBrick.css({
-					'margin-left': 0,
-					'margin-right': 0 
-				});
-		  
-				// Calculate column number
-				if ($this.width() < 500 ) {
-					$colnum2 = 2;
-				} else { 
-					$colnum2 = columnNumber;
+			callbacks: {
+				imageLoadComplete: function() {
+				  var self = this;
+				  setTimeout(function() {
+				    self.wrap.addClass('mfp-image-loaded');
+				  }, 16);
+				},
+				close: function() {
+				  this.wrap.removeClass('mfp-image-loaded');
 				}
+			},
+			closeOnContentClick: true,
+			midClick: true
+		});
 
-				// Call isotope with selected columns
+		// Inline popups
+	    lightbox.el.inlineselectors.magnificPopup({
+	      disableOn: 700,
+	      closeBtnInside: true,
+	      tLoading: '<div class="tw-loading"></div>',
+	      type: 'iframe',
+	      mainClass: 'mfp-fade',
+	      removalDelay: 160,
+	      preloader: false,
+	      fixedContentPos: false
+	    });
+	}
+
+	/**
+	 * Isotope function for the plugin
+	 * @since v1.3
+	 * (c) Copyright 2013 Andre Gagnon - http://themewich.com
+	 */
+	$.fn.themewichIsotope = function() {
+
+		if(this.length == 0) return this; // if nothing supplied
+
+		$(this).each(function(){
+
+			var $this 			= $(this),
+	  	 	 	columnNumber 	= $this.attr('data-value'),
+	  	 	 	isoBrick 		= $this.find('.isobrick'),
+	  	 	 	colnum 			= 2;
+
+	  	 	// Remove margins
+			isoBrick.css({
+				'margin-left': 0,
+				'margin-right': 0 
+			});
+	 
+
+			function setColNumber() {
+				// Calculate column number
+				if ($(window).width() < 767) {
+					colnum = 2;
+				} else { 
+					colnum = columnNumber;
+				}
+				return colnum;
+			}
+
+			function runIsotope() {
+				colnum = setColNumber();
+
 				if (columnNumber != '1') {
-				  $this.isotope({
-				  masonry: {
-				      columnWidth: $this.width() / $colnum2
-				    },
-				    itemSelector : '.isobrick',
-				    layoutMode : 'masonry'
-				  });
-					
-					// In case it fires too soon due to css3 animations
-					$this.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
-						if ($this.hasClass('isotope')) {
-							$this.isotope('reLayout');
-						}
+					$this.isotope({
+						masonry: {
+					    	columnWidth: $this.width() / colnum
+					    },
+					    itemSelector : '.isobrick',
+					    layoutMode : 'masonry'
 					});
 				}
+			}
 
+			runIsotope(); // run on document.ready
 
-				/**
-				* Run Isotope on Resize Event
-				*/
-				jQuery(window).resize(function () {
-					// Find column number
-					if ($this.width() < 500 ) {
-						$colnum2 = 2;
-					} else {
-						$colnum2 = columnNumber;
-					}
-
-					// Resize isotope container
-					if (columnNumber != '1') {
-						$this.isotope({
-						  masonry: {  // update columnWidth to a percentage of container width
-						  	columnWidth: $this.width() / $colnum2
-						   },
-						  itemSelector : '.isobrick',
-						  layoutMode : 'masonry'
-						});
-					}	
-				});
-				
+			$(window).resize(function () {
+				runIsotope(); // Run on window resize
 			});
+		});
+	}
 
-});
+	// Instantiate the plugins
+    $(document).ready(function(){
+    	if ($.fn.magnificPopup) {
+			$('a.tw-lightbox').themewichLightBox();
+		}
+		if ($.fn.themewichTabs) {
+			$('ul.tw-tabs').themewichTabs();
+		}
+		if ($.fn.isotope) {
+			$('.tw-postshortcode .isotopecontainer').themewichIsotope();
+		}
+		if ($.fn.accordion) {
+			$('.tw-accordion').accordion({heightStyle: 'content'});
+		}
+		$('.tw-toggle-trigger').click(function(){
+			$(this).toggleClass('active').next().slideToggle('fast');
+			return false;
+		});
+	});
+
+})(jQuery);

@@ -37,7 +37,7 @@ add_action( 'admin_head', 'themewich_add_tinymce' );
  * @since  v1.1
  */
 function themewich_add_tinymce_plugin( $plugin_array ) {
-    $plugin_array['themewich_shortcodes'] = TW_PLUGIN_DIR . 'js/themewich.admin.dropdown.js';
+    $plugin_array['themewich_shortcodes'] = TW_PLUGIN_DIR . 'js/themewich.admin.dropdown.js?ver=1.3';
     // Print all plugin js path
     return $plugin_array;
 }
