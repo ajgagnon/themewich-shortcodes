@@ -19,7 +19,7 @@ class Themewich_TinyMCE_Buttons {
 		}  
     }  
 	function add_plugin($plugin_array) {  
-	   $plugin_array['themewich_shortcodes'] = plugins_url( '/js/themewich.admin.dropdown.3.0.js', realpath(dirname(__FILE__) . '/..') );
+	   $plugin_array['themewich_shortcodes'] = plugins_url( '/js/themewich.admin.dropdown.3.0.js?ver=1.3', realpath(dirname(__FILE__) . '/..') );
 	   return $plugin_array; 
 	}
 	function register_button($buttons) {  
