@@ -47,8 +47,8 @@ if( ! function_exists( 'themewich_shortcodes_scripts' ) ) {
  */
 if ( ! function_exists( 'themewich_print_lightbox_script' ) ) :
 	function themewich_print_lightbox_script() {
-		global $add_lightbox;
-		if ( ! $add_lightbox ) { return; }
+		global $tw_add_lightbox;
+		if ( ! $tw_add_lightbox ) { return; }
 	
 		wp_print_scripts( 'magnificpopup' );
 	}
@@ -63,8 +63,8 @@ endif;
  */
 if ( ! function_exists( 'themewich_print_isotope_script' ) ) :
 	function themewich_print_isotope_script() {
-		global $add_isotope;
-		if ( ! $add_isotope ) { return; }
+		global $tw_add_isotope;
+		if ( ! $tw_add_isotope ) { return; }
 	
 		wp_print_scripts( 'isotope' );
 	}
@@ -79,8 +79,8 @@ endif;
  */
 if ( ! function_exists( 'themewich_print_tabs_script' ) ) :
 	function themewich_print_tabs_script() {
-		global $add_tabs;
-		if ( ! $add_tabs ) { return; }
+		global $tw_add_tabs;
+		if ( ! $tw_add_tabs ) { return; }
 	
 		wp_print_scripts( 'themewich-tabs' );
 	}
@@ -95,8 +95,8 @@ endif;
  */
 if ( ! function_exists( 'themewich_print_accordion_script' ) ) :
 	function themewich_print_accordion_script() {
-		global $add_accordion;
-		if ( ! $add_accordion ) { return; }
+		global $tw_add_accordion;
+		if ( ! $tw_add_accordion ) { return; }
 
 		wp_dequeue_script( 'themewich-shortcodes' );
 		wp_enqueue_script( 'jquery-ui-core' );	

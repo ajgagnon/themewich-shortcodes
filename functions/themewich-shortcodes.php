@@ -83,7 +83,7 @@ if( ! function_exists( 'themewich_lightbox_shortcode' ) ) {
 		$out = '<a href="' .$link. '" class="tw-lightbox ' . $class . '">' .do_shortcode($content). '</a>';
 
 		// Add lightbox script
-		global $add_lightbox; $add_lightbox = true;
+		global $tw_add_lightbox; $tw_add_lightbox = true;
 
 	    return $out;
 	}
@@ -147,7 +147,7 @@ if( ! function_exists('themewich_tabs_shortcode ') ) {
 		$out .= '<ul class="tabs-content">'. do_shortcode($content) .'</ul><div class="clear"></div></div>';
 		
 		// Add tabs script
-		global $add_tabs; $add_tabs = true;
+		global $tw_add_tabs; $tw_add_tabs = true;
 		return $out;
 	}
 	add_shortcode( 'tw-tabs', 'themewich_tabs_shortcode' );
@@ -341,7 +341,7 @@ if( ! function_exists( 'themewich_posts_shortcode ') ) {
 		$out .= '<div class="clear"></div></div></div>';
 
 		// Add isotope script
-		global $add_isotope; $add_isotope = true;
+		global $tw_add_isotope; $tw_add_isotope = true;
 
 		// Return html string
 	    return $out;
@@ -376,8 +376,8 @@ if( ! function_exists( 'themewich_accordion_main_shortcode ') ) {
 			'class' => ''
 		), $atts ) );
 
-		global $add_accordion;
-		$add_accordion = true;
+		global $tw_add_accordion;
+		$tw_add_accordion = true;
 		
 		// Display the accordion	
 		return '<div class="tw-accordion '. $class .'">' . do_shortcode($content) . '</div>';
@@ -536,7 +536,7 @@ if( ! function_exists( 'themewich_parallax_images ') ) {
             
             if ($lightbox && ($lightbox == 'yes' || $lightbox == 'Yes' ) ) {   
                 // Add lightbox script
-                global $add_lightbox; $add_lightbox = true;
+                global $tw_add_lightbox; $tw_add_lightbox = true;
                 $out .= ' class="tw-lightbox"';
             }
             
