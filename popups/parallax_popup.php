@@ -42,8 +42,6 @@ var ParallaxDialog = {
 			output += 'opacity="' + opacity + '" ';
 		if (bgcolor)
 			output += 'bgcolor="' + bgcolor + '" ';
-		if (link)
-			output += 'link="' + link + '" ';
 		if (target)
 		    output += 'target="' + target + '" ';
 		if (lightbox)
