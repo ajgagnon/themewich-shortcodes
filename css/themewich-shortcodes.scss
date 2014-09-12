@@ -1176,6 +1176,10 @@ h3.title-shortcode a {
 
 /* Social
 ================================================== */
+.safari .tw-social-icon { // wouldn't you know it, more safari issues
+  -webkit-transition: none !important;  /* Safari 3.2-6  */
+          transition: none !important;  /* Safari 6.1+  */
+}
 .tw-social-icon {
 	display: inline-block;
   text-indent:999999px;
