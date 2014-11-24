@@ -28,7 +28,7 @@
   background-size:50px;
 }
 .svg.smil .tw-loading-dark {
-  background-image:url(i../mages/loading-spin-dark.svg);
+  background-image:url(../images/loading-spin-dark.svg);
   background-size:50px;
 }
 
@@ -116,14 +116,6 @@
 
 .mfp-ajax-cur {
   cursor: progress;
-}
-
-.mfp-zoom-out-cur .mfp-ready {
-  cursor: url(images/large_x_thick.png), pointer !important;
-}
-
-.mfp-zoom {
-  cursor: url(images/large_+.png), pointer;
 }
 
 .mfp-auto-cursor .mfp-content {
@@ -1176,6 +1168,10 @@ h3.title-shortcode a {
 
 /* Social
 ================================================== */
+.safari .tw-social-icon { // wouldn't you know it, more safari issues
+  -webkit-transition: none !important;  /* Safari 3.2-6  */
+          transition: none !important;  /* Safari 6.1+  */
+}
 .tw-social-icon {
 	display: inline-block;
   text-indent:999999px;
@@ -1386,7 +1382,10 @@ a.tw-button.shortcode {
   line-height: 0;
   min-width: 100% !important;
   max-width: 100% !important;
-  background:transparent url(images/small-loading.gif) center no-repeat;
+  background:transparent url(../images/loading.gif) center no-repeat;
+}
+.svg .tw-post-break {
+    background:transparent url(../images/loading-spin.svg) center no-repeat;
 }
 .tw-full-bg-image {
   display: block;
