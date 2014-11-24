@@ -122,8 +122,8 @@ tinyMCEPopup.onInit.add(ParallaxDialog.init, ParallaxDialog);
 					<br style="clear:both;" />
 					
 					<div>
-						<label for="parallax-target">Open Link in lightbox?</label>
-						<select name="parallax-target" class="parallax-target" size="1">
+						<label for="parallax-lightbox">Open Link in lightbox?</label>
+						<select name="parallax-lightbox" class="parallax-lightbox" size="1">
 							<option value="no" selected="selected">No</option>
 							<option value="yes">Yes</option>
 						</select>
