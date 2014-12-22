@@ -4,7 +4,7 @@ Plugin Name: Themewich Shortcodes
 Plugin URI: http://themewich.com
 Description: A better, more user-friendly shortcode plugin.
 Author: Andre Gagnon
-Version: 1.3.1
+Version: 1.3.2
 Author URI: http://www.themewich.com
 */
 
