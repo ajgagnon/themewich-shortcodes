@@ -558,7 +558,7 @@ if( ! function_exists( 'themewich_parallax_images ') ) {
         }
         $bgc .= '"';
         
-        $out .= '<div class="tw-full-bg-image"' . $bgimg . '"><div class="tw-opacity"'.$bgc.'></div><div class="tw-parallax-content">' . do_shortcode($content) . '</div></div>';
+        $out .= '<div class="tw-full-bg-image"' . $bgimg . '><div class="tw-opacity"'.$bgc.'></div><div class="tw-parallax-content">' . do_shortcode($content) . '</div></div>';
         
         /* End Link */
         $out .= ($link && $link != '') ? '</a>' : '';
