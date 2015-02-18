@@ -1406,6 +1406,9 @@ a.tw-button.shortcode {
   background-position: center;
   overflow:hidden;
 }
+body.chrome .tw-full-bg-image {
+  background-attachment: scroll;
+}
 .tw-post-break .tw-opacity {
  position:absolute;
  top:0;

@@ -142,6 +142,29 @@ jQuery.noConflict(); // Set jQuery to NoConflict Mode
 		});
 	}
 
+	$.fn.themewichParallax = function() {
+		var $this = $(this);
+
+			function setWidth() {
+				var postWidth 	= $this.outerWidth(),
+					windowWidth = $(window).width(),
+					padding 	= (windowWidth - postWidth)/2;
+
+				$('.tw-full-bg-image').css({
+					'margin-left': -padding + 'px',
+					'margin-right': -padding + 'px',
+					'padding-left' : padding + 'px',
+					'padding-right' : padding + 'px'
+				});
+			}
+
+			setWidth();
+
+			$(window).resize(function(){
+				setWidth();
+			});
+	}
+
 	// Instantiate the plugins
     $(document).ready(function(){
     	if ($.fn.magnificPopup) {
@@ -160,6 +183,9 @@ jQuery.noConflict(); // Set jQuery to NoConflict Mode
 			$(this).toggleClass('active').next().slideToggle('fast');
 			return false;
 		});
+		if ($.fn.themewichParallax) {
+			$('.tw-post-break').themewichParallax();
+		}
 	});
 
 })(jQuery);
