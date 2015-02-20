@@ -139,6 +139,10 @@ jQuery.noConflict(); // Set jQuery to NoConflict Mode
 			$(window).resize(function () {
 				runIsotope(); // Run on window resize
 			});
+			// layout Isotope again after all images have loaded
+			$this.imagesLoaded( function() {
+			  runIsotope();
+			});
 		});
 	}
 
