@@ -315,8 +315,8 @@ if( ! function_exists( 'themewich_posts_shortcode ') ) {
 
 			// Set Date for Posts Only
 			if ($type == 'post' || $type == 'Post' || $type == 'posts' || $type == 'Posts') {
-				$postinfo .= '<span class="date">' . get_the_time(get_option('date_format')) . ' | 
-								<a href="' . get_author_posts_url(get_the_author_meta( 'ID' )) . '">
+				$postinfo .= '<span class="date"><span class="posted">' . get_the_time(get_option('date_format')) . '</span> <span class="date-divider"> | </span>
+								<a href="' . get_author_posts_url(get_the_author_meta( 'ID' )) . '" class="author">
 									'. get_the_author_meta('display_name').'
 								</a>
 							  </span>';
