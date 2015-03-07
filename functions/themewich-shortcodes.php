@@ -606,3 +606,39 @@ if( ! function_exists( 'themewich_parallax_images ') ) {
 	}
 	add_shortcode( 'tw-parallax', 'themewich_parallax_images' );
 }
+
+/**
+ * Current Year Shortcode
+ * @since v1.0
+ */
+if ( ! function_exists( 'themewich_current_year' ) ) {
+	function themewich_current_year() {
+		return date( 'Y' );
+	}
+
+	add_shortcode( 'tw-current-year', 'themewich_current_year' );
+}
+
+/**
+ * Site Title Shortcode
+ * @since v1.0
+ */
+if ( ! function_exists( 'themewich_site_title' ) ) {
+	function themewich_site_title() {
+		return get_bloginfo( 'name' );
+	}
+
+	add_shortcode( 'tw-site-title', 'themewich_site_title' );
+}
+
+/**
+ * Site Tagline Shortcode
+ * @since v1.0
+ */
+if ( ! function_exists( 'themewich_site_tagline' ) ) {
+	function themewich_site_tagline() {
+		return get_bloginfo( 'description' );
+	}
+
+	add_shortcode( 'tw-site-tagline', 'themewich_site_tagline' );
+}
