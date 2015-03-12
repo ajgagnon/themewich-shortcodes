@@ -42,7 +42,7 @@ if ( ! function_exists('tw_browser_body_class') ) :
                      $classes[] = 'windows';
                }
 
-            $classes[] = strtolower( wp_get_theme() ); // add theme name 
+            $classes[] = strtolower( wp_get_theme() ); // add theme name
             $classes[] = wp_is_mobile() ? 'mobile-device' : 'desktop-device'; // add mobile device class
 
             return $classes;
@@ -55,10 +55,10 @@ endif;
  * @since v1.0
  */
 if( ! function_exists( 'themewich_fix_shortcodes' ) ) {
-	function themewich_fix_shortcodes($content){   
+	function themewich_fix_shortcodes($content){
 		$array = array (
-			'<p>[' => '[', 
-			']</p>' => ']', 
+			'<p>[' => '[',
+			']</p>' => ']',
 			']<br />' => ']',
 			']&nbsp;' => ']',
 			'&nbsp;[' => '['
@@ -155,13 +155,13 @@ if( ! function_exists('themewich_tabs_shortcode ') ) {
 		extract(shortcode_atts(array(
 	    'class' => ''
 	    ), $atts));
-		
+
 		$tabs_counter = 1;
 
 		//$tabs_counter_2++;
-			
+
 		$out 	= '<div class="clear"></div><div class="tw-tabs-shortcode"><ul class="tw-tabs '. $class .'">';
-		
+
 		// For each tab attribute
 		foreach ($atts as $tab) {
 			// Skip class attribute
@@ -171,7 +171,7 @@ if( ! function_exists('themewich_tabs_shortcode ') ) {
 				$first = ($tabs_counter == 1) ? 'active' : '';
 
 				$out .= '<li><a class="'.$first.'" href="#'.$tabs_counter.'">'.$tab.'</a></li>';
-			
+
 				$tabs_counter++;
 			}
 		}
@@ -180,7 +180,7 @@ if( ! function_exists('themewich_tabs_shortcode ') ) {
 
 		// Set up container for content
 		$out .= '<ul class="tabs-content">'. do_shortcode($content) .'</ul><div class="clear"></div></div>';
-		
+
 		// Add tabs script
 		global $tw_add_tabs; $tw_add_tabs = true;
 		return $out;
@@ -197,18 +197,18 @@ if( ! function_exists( 'themewich_tab_shortcode ') ) {
 		extract(shortcode_atts(array(
 		'class' => ''
 	    ), $atts));
-		
+
 		// Set and initialize global counter
 		global $tab_counter;
 		$tab_counter = !isset($tab_counter) ? 1 : $tab_counter;
-		
+
 		// Set first tab to active
 		$first = ($tab_counter == 1) ? 'active' : '';
 
 		$out = '<li id="'.$tab_counter.'" class="'.$first.' '. $class .'">'. do_shortcode($content) .'</li>';
-		
+
 		$tab_counter++;
-		
+
 		return $out;
 	}
 	add_shortcode( 'tw-tab', 'themewich_tab_shortcode' );
@@ -226,7 +226,7 @@ if( ! function_exists( 'themewich_posts_shortcode ') ) {
 	    'title'	    => '',
 	    'category'	=> '',
 	    'content'   => 'yes',
-	    'type'      => 'post', 
+	    'type'      => 'post',
 	    'class'     => ''
 
 	    ), $atts));
@@ -264,12 +264,12 @@ if( ! function_exists( 'themewich_posts_shortcode ') ) {
 						'field' => 'slug',
 						'terms' => strtolower($category)
 					))
-			)); 
+			));
 		} else {
 			$the_query = new WP_Query(array(
 				'showposts' => $number,
 				'post_type' => strtolower($type)
-			)); 
+			));
 		}
 
 		// Calculate appropriate columns if none are set
@@ -290,6 +290,9 @@ if( ! function_exists( 'themewich_posts_shortcode ') ) {
 			$datavalue = $columns;
 		}
 
+		// allow hook to change thumbnail size
+		$post_thumbnail_size = apply_filters( 'tw_posts_shortcode_thumb_size', 'medium' );
+
 		// Output the Shortcode
 		// =======================================================================
 		$out .= '<div class="sidepostcontainer isotopecontainer" data-value="'. $datavalue .'">';
@@ -301,11 +304,11 @@ if( ! function_exists( 'themewich_posts_shortcode ') ) {
 			if ( (function_exists('has_post_thumbnail')) && (has_post_thumbnail()) ) :
 				$postinfo .= '<div class="thumbnailarea">
 				                  <a class="thumblink" title="'. __('Permanent Link to %s', 'framework') .  get_the_title() .'" href="'. get_permalink() .'">
-				                  	'. get_the_post_thumbnail(get_the_ID(), 'medium', array('class' => 'scale-with-grid')) .'
+				                  	'. get_the_post_thumbnail(get_the_ID(), $post_thumbnail_size, array('class' => 'scale-with-grid')) .'
 				                  </a>
 			                  </div>';
-			endif;	                
-			
+			endif;
+
 			// Get Post Title
 			$postinfo .= '<h3 class="title-shortcode">
 							<a href="'. get_permalink() .'" title="'. __('Permanent Link to %s', 'framework') .  get_the_title() .'">
@@ -362,15 +365,15 @@ if( ! function_exists( 'themewich_posts_shortcode ') ) {
 					if ($counter == 4) {
 						$out .= '<div class="tw-one-fourth column-last articleinner isobrick">'.$postinfo.'</div>';
 					} else {
-						$out .= '<div class="tw-one-fourth articleinner isobrick">'.$postinfo.'</div>';				
+						$out .= '<div class="tw-one-fourth articleinner isobrick">'.$postinfo.'</div>';
 					}
 				break;
 			}
-	 
+
 	 		// Increment counter
 			$counter++;
 		// End and reset query
-		endwhile;  wp_reset_query(); 
+		endwhile;  wp_reset_query();
 
 		// Close containers
 		$out .= '<div class="clear"></div></div></div>';
@@ -394,7 +397,7 @@ if( ! function_exists( 'themewich_toggle_shortcode ') ) {
 			'title' => 'Toggle Title',
 			'class' => '',
 		), $atts ) );
-		
+
 		// Display the Toggle
 		return '<div class="tw-toggle '. $class .'"><div class="tw-toggle-trigger">'. $title .'</div><div class="tw-toggle-container">' . do_shortcode($content) . '</div></div>';
 	}
@@ -413,8 +416,8 @@ if( ! function_exists( 'themewich_accordion_main_shortcode ') ) {
 
 		global $tw_add_accordion;
 		$tw_add_accordion = true;
-		
-		// Display the accordion	
+
+		// Display the accordion
 		return '<div class="tw-accordion '. $class .'">' . do_shortcode($content) . '</div>';
 	}
 	add_shortcode( 'tw-accordion', 'themewich_accordion_main_shortcode' );
@@ -429,7 +432,7 @@ if( ! function_exists( 'themewich_accordion_section_shortcode ') ) {
 		extract( shortcode_atts( array(
 			'title' => 'Title',
 			'class' => '',
-		), $atts ) );  
+		), $atts ) );
 	   return '<div class="tw-accordion-trigger '. $class .'"><a href="#">'. $title .'</a></div><div>' . do_shortcode($content) . '</div>';
 	}
 	add_shortcode( 'tw-accordion-section', 'themewich_accordion_section_shortcode' );
@@ -470,29 +473,38 @@ if( ! function_exists( 'themewich_pricing_shortcode ') ) {
 			'button_border_radius' => '',
 			'class'                => '',
 		), $atts ) );
-		
+
 		//set variables
 		$featured_pricing = ( $featured == 'yes' ) ? 'featured' : NULL;
 		$border_radius_style = ( $button_border_radius ) ? 'style="border-radius:'. $button_border_radius .'"' : NULL;
-		
-		//start content  
+
+		//start content
 		$pricing_content  = '<div class="tw-pricing tw-'. $size .' '. $featured_pricing .' tw-column-'. $position. ' '. $class .'">' .
 						    '<div class="tw-pricing-header">' .
 		  						'<h5>'. $plan. '</h5>' .
 								'<div class="tw-pricing-cost">'. $cost .'</div>' .
 								'<div class="tw-pricing-per">'. $per .'</div>' .
 		 					'</div>' .
-		 					'<div class="tw-pricing-content">' .
-		 						$content .
-		 					'</div>';
+		 					'<div class="tw-pricing-content">' . wp_kses( $content, array(
+				'a' => array(
+					'href' => array(),
+					'title' => array()
+				),
+				'br' => array(),
+				'em' => array(),
+				'strong' => array(),
+				'ul' => array(),
+				'ol' => array(),
+				'li' => array()
+			) ) . '</div>';
 
-		// Add button if there's a URL					
+		// Add button if there's a URL
 		if( $button_url ) {
 			$pricing_content .= '<div class="tw-pricing-button"><a href="'. $button_url .'" class="tw-button '. $button_color .'" target="_'. $button_target .'" rel="'. $button_rel .'" '. $border_radius_style .'><span class="tw-button-inner" '. $border_radius_style .'>'. $button_text .'</span></a></div>';
 		}
 
 		// Close Div
-		$pricing_content .= '</div>'; 
+		$pricing_content .= '</div>';
 
 		return $pricing_content;
 	}
@@ -503,10 +515,10 @@ if( ! function_exists( 'themewich_pricing_shortcode ') ) {
 /*
  * Social Shortcode
  * @since v1.0
- * 
+ *
  */
 if( ! function_exists( 'themewich_social_shortcode ') ) {
-	function themewich_social_shortcode( $atts ){   
+	function themewich_social_shortcode( $atts ){
 		extract( shortcode_atts( array(
 			'icon'   => 'twitter',
 			'url'    => 'http://www.twitter.com/username',
@@ -519,12 +531,12 @@ if( ! function_exists( 'themewich_social_shortcode ') ) {
 	}
 	add_shortcode( 'tw-social', 'themewich_social_shortcode' );
 }
-	
-	
+
+
 /*
  * Columns
  * @since v1.0
- * 
+ *
  */
 if( ! function_exists( 'themewich_column_shortcode ') ) {
 	function themewich_column_shortcode( $atts, $content = null ){
@@ -535,11 +547,11 @@ if( ! function_exists( 'themewich_column_shortcode ') ) {
 		  ), $atts ) );
 
 		$out = '<div class="tw-column tw-' . $width . ' tw-column-'.$position.' '. $class .'">' . do_shortcode($content) . '</div>';
-		
+
 		if ($position == 'last') {
 			$out .= '<div class="clear"></div>';
 		}
-		
+
 		return $out;
 
 	}
@@ -549,7 +561,7 @@ if( ! function_exists( 'themewich_column_shortcode ') ) {
 /*
  * Parallax Images
  * @since v1.1
- * 
+ *
  */
 if( ! function_exists( 'themewich_parallax_images ') ) {
 	function themewich_parallax_images( $atts, $content = null ){
@@ -562,28 +574,28 @@ if( ! function_exists( 'themewich_parallax_images ') ) {
             'lightbox'   => '',
 			'class'      => '',
 		  ), $atts ) );
-        
+
         $out = '<div class="tw-post-break '.$class.'">';
-        
+
         /* Setup Link */
         if ($link && $link != '') {
             $out .= '<a href="' . $link . '"';
-            
-            if ($lightbox && ($lightbox == 'yes' || $lightbox == 'Yes' ) ) {   
+
+            if ($lightbox && ($lightbox == 'yes' || $lightbox == 'Yes' ) ) {
                 // Add lightbox script
                 global $tw_add_lightbox; $tw_add_lightbox = true;
                 $out .= ' class="tw-lightbox"';
             }
-            
+
             $out .= ($target && $target != '') ? ' target="_' . $target . '"' : '';
             $out .= ($link && $link != '') ? '>' : '';
         }
-        
+
         /* Background Image */
         $bgimg = ' style="';
         $bgimg .= ($image && $image != '') ? 'background-image: url(' . $image . '); ' : '';
         $bgimg .= '"';
-        
+
         /* Background Color */
         $bgc = ' style="';
         $bgc .= ($bgcolor && $bgcolor != '') ? 'background-color:' . $bgcolor . '; ' : '';
@@ -592,15 +604,15 @@ if( ! function_exists( 'themewich_parallax_images ') ) {
             $bgc .= 'opacity:'.$opacity.'; ';
         }
         $bgc .= '"';
-        
+
         $out .= '<div class="tw-full-bg-image"' . $bgimg . '><div class="tw-opacity"'.$bgc.'></div><div class="tw-parallax-content">' . do_shortcode($content) . '</div></div>';
-        
+
         /* End Link */
         $out .= ($link && $link != '') ? '</a>' : '';
-        
+
         /* End Post Break */
         $out .= '</div><div class="clear"></div>';
-        
+
 		return $out;
 
 	}
