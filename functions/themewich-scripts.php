@@ -11,7 +11,7 @@
 
 /**
  * Register and Load Shortcodes CSS
- * 
+ *
  * @since v1.0
  */
 if( ! function_exists( 'themewich_plugin_shortcode_styles' ) ) {
@@ -32,80 +32,18 @@ if( ! function_exists( 'themewich_plugin_shortcodes_scripts' ) ) {
 		wp_register_script( 'themewich-shortcodes', plugins_url( 'js/themewich.shortcodes.js', dirname(__FILE__) ), 'jquery', '1.0', true );
 		wp_register_script( 'magnificpopup', plugins_url( '/js/jquery.magnific-popup.min.js', dirname(__FILE__) ), 'jquery', '0.9.4', true );
 		wp_register_script( 'isotope', plugins_url( '/js/jquery.isotope.min.js', dirname(__FILE__) ), 'jquery', '1.5.25', true );
-		wp_register_script( 'imagesloaded', plugins_url( '/js/imagesloaded.pkgd.min.js', dirname(__FILE__) ), 'jquery', '3.1.8', true ); 
+		wp_register_script( 'imagesloaded', plugins_url( '/js/imagesloaded.pkgd.min.js', dirname(__FILE__) ), 'jquery', '3.1.8', true );
 		wp_register_script( 'themewich-tabs', plugins_url( '/js/jquery.themewichtabs.min.js', dirname(__FILE__) ), 'jquery', '1.0', true );
 
 		wp_enqueue_script( 'modernizr' );
+		wp_enqueue_script( 'magnificpopup' );
+		wp_enqueue_script( 'imagesloaded' );
+		wp_enqueue_script( 'isotope' );
+		wp_enqueue_script( 'themewich-tabs' );
+		wp_enqueue_script( 'jquery-ui-core' );
+		wp_enqueue_script( 'jquery-ui-widget' );
+		wp_enqueue_script( 'jquery-ui-accordion' );
 		wp_enqueue_script( 'themewich-shortcodes' );
 	}
 	add_action( 'wp_enqueue_scripts', 'themewich_plugin_shortcodes_scripts' );
 }
-
-/**
- * Loads lightbox javascript
- * 
- * @since ThemewichShortcodes 1.0
- */
-if ( ! function_exists( 'themewich_plugin_print_lightbox_script' ) ) :
-	function themewich_plugin_print_lightbox_script() {
-		global $tw_add_lightbox;
-		if ( ! $tw_add_lightbox ) { return; }
-	
-		wp_print_scripts( 'magnificpopup' );
-	}
-	add_action( 'wp_footer', 'themewich_plugin_print_lightbox_script' );
-endif;
-
-
-/**
- * Loads isotope javascript
- * 
- * @since ThemewichShortcodes 1.0
- */
-if ( ! function_exists( 'themewich_plugin_print_isotope_script' ) ) :
-	function themewich_plugin_print_isotope_script() {
-		global $tw_add_isotope;
-		if ( ! $tw_add_isotope ) { return; }
-	
-		wp_print_scripts( 'imagesloaded' );
-		wp_print_scripts( 'isotope' );
-	}
-	add_action( 'wp_footer', 'themewich_plugin_print_isotope_script' );
-endif;
-
-
-/**
- * Loads tabs javascript
- * 
- * @since ThemewichShortcodes 1.0
- */
-if ( ! function_exists( 'themewich_plugin_print_tabs_script' ) ) :
-	function themewich_plugin_print_tabs_script() {
-		global $tw_add_tabs;
-		if ( ! $tw_add_tabs ) { return; }
-	
-		wp_print_scripts( 'themewich-tabs' );
-	}
-	add_action( 'wp_footer', 'themewich_plugin_print_tabs_script' );
-endif;
-
-
-/**
- * Loads accordion javascript
- * 
- * @since ThemewichShortcodes 1.0
- */
-if ( ! function_exists( 'themewich_plugin_print_accordion_script' ) ) :
-	function themewich_plugin_print_accordion_script() {
-		global $tw_add_accordion;
-		if ( ! $tw_add_accordion ) { return; }
-
-		wp_dequeue_script( 'themewich-shortcodes' );
-		wp_enqueue_script( 'jquery-ui-core' );	
-		wp_enqueue_script( 'jquery-ui-widget' );
-		wp_enqueue_script( 'jquery-ui-accordion' );
-		wp_enqueue_script( 'themewich-shortcodes' );
-
-	}
-	add_action( 'wp_footer', 'themewich_plugin_print_accordion_script' );
-endif;	
