@@ -1432,7 +1432,6 @@ a.tw-button.shortcode {
   float: none;
   margin: 40px auto 30px;
   display: inline-block;
-  line-height: 0;
   min-width: 100% !important;
   max-width: 100% !important;
   background: transparent url(../images/loading.gif) center no-repeat;
