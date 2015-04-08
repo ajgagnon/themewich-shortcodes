@@ -174,9 +174,9 @@ jQuery.noConflict(); // Set jQuery to NoConflict Mode
     	if ($.fn.magnificPopup) {
 			$('a.tw-lightbox').themewichLightBox();
 		}
-		if ($.fn.themewichTabs) {
-			$('ul.tw-tabs').themewichTabs();
-		}
+		$( ".tw-tabs-shortcode" ).tabs({
+			heightStyle: "content" // Each panel will be only as tall as its content
+		});
 		if ($.fn.isotope) {
 			$('.tw-postshortcode .isotopecontainer').themewichIsotope();
 		}

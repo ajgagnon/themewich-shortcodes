@@ -61,7 +61,9 @@ if( ! function_exists( 'themewich_fix_shortcodes' ) ) {
 			']</p>' => ']',
 			']<br />' => ']',
 			']&nbsp;' => ']',
-			'&nbsp;[' => '['
+			'&nbsp;[' => '[',
+			'<p></p>[' => '[',
+			']<p></p>' => ']'
 		);
 		$content = strtr($content, $array);
 		return $content;
@@ -153,21 +155,25 @@ if( ! function_exists('themewich_tabs_shortcode ') ) {
 	    'class' => ''
 	    ), $atts));
 
-		$tabs_counter = 1;
+		global $tab_counter; // individual tab counter
+		global $tab_id_g; // global tabs id
 
-		//$tabs_counter_2++;
+		// set up static id per page, store globally
+		static $tab_id = 0; $tab_id++; 
+		$tab_id_g = $tab_id;
 
-		$out 	= '<div class="clear"></div><div class="tw-tabs-shortcode"><ul class="tw-tabs '. $class .'">';
+		$tabs_counter = 1; // reset tabs counter
+		$tab_counter = 1; // reset tab counter
+
+		$out 	= '<div class="clear"></div><div class="tw-tabs-shortcode">';
+		$out 	.= '<ul id="tw-tabs-' . $tab_id . '" class="tw-tabs '. $class .'">';
 
 		// For each tab attribute
 		foreach ($atts as $tab) {
 			// Skip class attribute
 			if ($tab !== $class) {
 
-				// Set first tab to active
-				$first = ($tabs_counter == 1) ? 'active' : '';
-
-				$out .= '<li><a class="'.$first.'" href="#'.$tabs_counter.'">'.$tab.'</a></li>';
+				$out .= '<li><a href="#tw-tab-content-'. $tabs_counter .'-'. $tab_id_g .'">'.$tab.'</a></li>';
 
 				$tabs_counter++;
 			}
@@ -176,7 +182,7 @@ if( ! function_exists('themewich_tabs_shortcode ') ) {
 		$out .= '</ul><div class="clear"></div>';
 
 		// Set up container for content
-		$out .= '<ul class="tabs-content">'. do_shortcode($content) .'</ul><div class="clear"></div></div>';
+		$out .= do_shortcode($content) .'<div class="clear"></div></div>';
 
 		return $out;
 	}
@@ -195,12 +201,11 @@ if( ! function_exists( 'themewich_tab_shortcode ') ) {
 
 		// Set and initialize global counter
 		global $tab_counter;
+		global $tab_id_g;
+
 		$tab_counter = !isset($tab_counter) ? 1 : $tab_counter;
 
-		// Set first tab to active
-		$first = ($tab_counter == 1) ? 'active' : '';
-
-		$out = '<li id="'.$tab_counter.'" class="'.$first.' '. $class .'">'. do_shortcode($content) .'</li>';
+		$out = '<div id="tw-tab-content-'. $tab_counter .'-'. $tab_id_g .'" class="tw-tab-' . $tab_id_g . ' tw-tab-content '. $class .'">'. do_shortcode($content) .'</div>';
 
 		$tab_counter++;
 
