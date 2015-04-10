@@ -2,9 +2,9 @@
 /*
 Plugin Name: Themewich Shortcodes
 Plugin URI: http://themewich.com
-Description: A better, more user-friendly shortcode plugin.
+Description: A user-friendly shortcode plugin.
 Author: Andre Gagnon
-Version: 1.3.2
+Version: 1.3.9
 Author URI: http://www.themewich.com
 */
 
@@ -14,3 +14,4 @@ require_once( dirname(__FILE__) . '/functions/themewich-tinymce.php' ); // Adds 
 
 // Define plugin directory constant
 define( 'TW_PLUGIN_DIR',   plugins_url() . '/themewich-shortcodes/' );
+define( 'TW_PLUGIN_VER', '1.3.9' );

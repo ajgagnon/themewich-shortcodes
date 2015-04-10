@@ -788,29 +788,41 @@ img.mfp-img {
 
 /* #Tabs
 ================================================== */
+.tw-tabs-shortcode p {
+  display: none;
+}
+.tw-tabs-shortcode .tw-tab-content p {
+  display: inline;
+}
+
 ul.tw-tabs {
-  display: inline-block;
   margin: 0 0 10px 0;
   padding: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.generatedcontent .content ul.tw-tabs {
+  margin-bottom: 0;
 }
 
 ul.tw-tabs li {
   display: block;
   width: auto;
-  height: 42px;
   padding: 0;
   float: left;
   margin-bottom: 0;
   margin-left: 0;
   list-style-type: none;
+  background-color: #dcdcdc;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 ul.tw-tabs li a {
   display: block;
   text-decoration: none;
   width: auto;
-  height: 34px;
-  padding: 6px 20px 0 20px;
+  padding: 6px 20px 6px 20px;
   line-height: 30px;
   border-style: solid;
   border-color: #dcdcdc;
@@ -819,29 +831,20 @@ ul.tw-tabs li a {
   margin: 0;
   font-size: 13px;
   color: #555;
-  border-bottom-width: 1px;
 }
 
 ul.tw-tabs li a:hover {
   color: #333;
-  box-shadow: 0 -1px 1px #F3F3F3;
-  -moz-box-shadow: 0 -1px 1px #F3F3F3;
-  -webkit-box-shadow: 0 -1px 1px #F3F3F3;
 }
 
-ul.tw-tabs li a.active {
-  height: 35px;
+ul.tw-tabs li.ui-tabs-active a {
   position: relative;
-  top: -4px;
-  padding-top: 9px;
-  border-left-width: 1px;
   margin: 0 0 0 -1px;
   border-bottom: none;
 }
 
-#footer ul.tw-tabs li a.active {
+#footer ul.tw-tabs li.ui-tabs-active a {
   background-color: #222;
-  padding-top: 4px;
 }
 
 #footer ul.tw-tabs li a {
@@ -858,31 +861,23 @@ ul.tw-tabs li:first-child a.active {
 }
 
 ul.tw-tabs li:first-child a {
-  border-width: 1px 1px 1px 1px;
+  border-width: 1px 1px 0 1px;
 }
 
-ul.tabs-content {
-  margin: 0;
-  padding: 0;
-  display: block;
+.tw-tab-content {
+  -webkit-font-smoothing: subpixel-antialiased;
+  border-top: 1px solid #dcdcdc !important;
+  border-color: rgba(0, 0, 0, 0.15);
+  margin-top: -1px;
+  padding-top: 40px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
-ul.tabs-content br {
-  display: none;
-}
-
-ul.tabs-content li br {
-  display: inline;
-}
-
-ul.tabs-content > li {
-  display: none;
-  margin-left: 0;
-  list-style-type: none;
-}
-
-ul.tabs-content > li.active {
-  display: block;
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+  background: #fff;
 }
 
 /* Clearfixing tw-tabs for beautiful stacking */
@@ -1439,7 +1434,6 @@ a.tw-button.shortcode {
   float: none;
   margin: 40px auto 30px;
   display: inline-block;
-  line-height: 0;
   min-width: 100% !important;
   max-width: 100% !important;
   background: transparent url(../images/loading.gif) center no-repeat;
@@ -1468,6 +1462,10 @@ a.tw-button.shortcode {
   padding-top: 100px;
   background-position: center;
   overflow: hidden;
+}
+
+body.chrome .tw-full-bg-image {
+  background-attachment: scroll;
 }
 
 .tw-post-break .tw-opacity {

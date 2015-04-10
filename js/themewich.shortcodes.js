@@ -139,7 +139,34 @@ jQuery.noConflict(); // Set jQuery to NoConflict Mode
 			$(window).resize(function () {
 				runIsotope(); // Run on window resize
 			});
+			// layout Isotope again after all images have loaded
+			$this.imagesLoaded( function() {
+			  runIsotope();
+			});
 		});
+	}
+
+	$.fn.themewichParallax = function() {
+		var $this = $(this);
+
+			function setWidth() {
+				var postWidth 	= $this.outerWidth(),
+					windowWidth = $(window).width(),
+					padding 	= (windowWidth - postWidth)/2;
+
+				$('.tw-full-bg-image').css({
+					'margin-left': -padding + 'px',
+					'margin-right': -padding + 'px',
+					'padding-left' : padding + 'px',
+					'padding-right' : padding + 'px'
+				});
+			}
+
+			setWidth();
+
+			$(window).resize(function(){
+				setWidth();
+			});
 	}
 
 	// Instantiate the plugins
@@ -147,9 +174,9 @@ jQuery.noConflict(); // Set jQuery to NoConflict Mode
     	if ($.fn.magnificPopup) {
 			$('a.tw-lightbox').themewichLightBox();
 		}
-		if ($.fn.themewichTabs) {
-			$('ul.tw-tabs').themewichTabs();
-		}
+		$( ".tw-tabs-shortcode" ).tabs({
+			heightStyle: "content" // Each panel will be only as tall as its content
+		});
 		if ($.fn.isotope) {
 			$('.tw-postshortcode .isotopecontainer').themewichIsotope();
 		}
@@ -160,6 +187,9 @@ jQuery.noConflict(); // Set jQuery to NoConflict Mode
 			$(this).toggleClass('active').next().slideToggle('fast');
 			return false;
 		});
+		if ($.fn.themewichParallax) {
+			$('.tw-post-break').themewichParallax();
+		}
 	});
 
 })(jQuery);
