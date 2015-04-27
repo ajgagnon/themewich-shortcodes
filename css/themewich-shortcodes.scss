@@ -1404,9 +1404,11 @@ a.tw-button.shortcode {
   padding-top:100px;
   background-position: center;
   overflow:hidden;
+  
 }
 body.chrome .tw-full-bg-image {
-  background-attachment: scroll;
+  //background-attachment: scroll;
+  z-index: -1; //fixes parallax issue in chrome
 }
 .tw-post-break .tw-opacity {
  position:absolute;
