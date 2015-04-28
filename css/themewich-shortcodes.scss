@@ -1,3 +1,10 @@
+/**
+ * Shortcodes CSS
+ * @version 1.4
+ */
+
+@import 'compass'; // add compass support
+
 /* #General Styles
 ================================================== */
 .clear {
@@ -824,7 +831,7 @@ ul.tw-tabs li.ui-tabs-active a {
 #footer ul.tw-tabs li.ui-tabs-active a  {
 	background-color:#222;
 }
-#footer ul.tw-tabs li a { 
+#footer ul.tw-tabs li a {
 	border-color:#555;
 	padding: 0px 15px;
 }
@@ -844,11 +851,11 @@ ul.tw-tabs li:first-child a {
   margin-top:-1px;
   padding-top:40px !important;
   padding-left:0 !important;
-  padding-right:0 !important; 
+  padding-right:0 !important;
 }
 
-.ui-state-active, 
-.ui-widget-content .ui-state-active, 
+.ui-state-active,
+.ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
   background:#fff;
 }
@@ -880,7 +887,7 @@ ul.tw-tabs {
 h3.title-shortcode {
   display:block;
   font-size:24px;
-  line-height:28px; 
+  line-height:28px;
 }
 h3.title-shortcode a {
 	text-decoration: none;
@@ -1184,8 +1191,8 @@ h3.title-shortcode a {
   background:#e9e9e9;
   background-repeat:no-repeat;
   background-position:center;
-  -webkit-border-radius: 100%; 
-  -moz-border-radius: 100%; 
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
   border-radius: 100%;
   -webkit-transition: color 0.3s ease-out, background 0.3s ease-out;  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
           transition: color 0.3s ease-out, background 0.3s ease-out;  /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
@@ -1273,8 +1280,8 @@ h3.title-shortcode a {
 
 /* #Buttons and Read More Links
 ================================================== */
-.tw-button, 
-a.tw-button, 
+.tw-button,
+a.tw-button,
 .tw-postshortcode a.more-link {
 	background-color: #333;
 	color: #fff;
@@ -1294,8 +1301,8 @@ a.tw-button,
 	transition:all 0.3s ease 0s;
 	border:none;
 }
-.tw-button:hover, a.tw-button:hover, 
-.widget a.tw-button:hover, 
+.tw-button:hover, a.tw-button:hover,
+.widget a.tw-button:hover,
 .tw-postshortcode a.more-link:hover {
 	background:#111 !important;
 }
@@ -1306,23 +1313,23 @@ a.tw-button,
 	display:block;
 	float:left;
 }
-.tw-button:hover, 
+.tw-button:hover,
 a.tw-button:hover,
 .tw-postshortcode a.more-link:hover {
 	color:#fff !important;
 }
-.tw-button.custom:hover, 
+.tw-button.custom:hover,
 a.tw-button.custom:hover {
 	background:#000 !important;
 }
-a.more-link, 
-a.tw-button, 
+a.more-link,
+a.tw-button,
 .tw-button {
 	margin-top:15px;
 }
 a.tw-button.shortcode {
 	margin-top:0 !important;
-	margin-bottom:15px;	
+	margin-bottom:15px;
 }
 
 /* #Button Sizes
@@ -1363,11 +1370,11 @@ a.tw-button.shortcode {
 .tw-button.purple {
 	background:#490A3D;
 }
-.tw-button.purple:hover, 
-.tw-button.blue:hover, 
-.tw-button.green:hover, 
-.tw-button.yellow:hover, 
-.tw-button.orange:hover, 
+.tw-button.purple:hover,
+.tw-button.blue:hover,
+.tw-button.green:hover,
+.tw-button.yellow:hover,
+.tw-button.orange:hover,
 .tw-button.red:hover {
 		background:#333;
 }
@@ -1424,16 +1431,16 @@ body.chrome .tw-full-bg-image {
 
 /* #General Layout Changes
 ================================================== */
-.tw-one-half, 
-.tw-one-third, 
-.tw-two-third, 
-.tw-three-fourth, 
-.tw-one-fourth, 
-.tw-one-fifth, 
-.tw-two-fifth, 
-.tw-three-fifth, 
-.tw-four-fifth, 
-.tw-one-sixth, 
+.tw-one-half,
+.tw-one-third,
+.tw-two-third,
+.tw-three-fourth,
+.tw-one-fourth,
+.tw-one-fifth,
+.tw-two-fifth,
+.tw-three-fifth,
+.tw-four-fifth,
+.tw-one-sixth,
 .tw-five-sixth {
 	width:100%;
 }
