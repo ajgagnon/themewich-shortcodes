@@ -1465,7 +1465,7 @@ a.tw-button.shortcode {
 }
 
 body.chrome .tw-full-bg-image {
-  background-attachment: scroll;
+  z-index: -1;
 }
 
 .tw-post-break .tw-opacity {
@@ -1498,5 +1498,3 @@ body.chrome .tw-full-bg-image {
     width: 100%;
   }
 }
-
-/*# sourceMappingURL=themewich-shortcodes.css.map */
