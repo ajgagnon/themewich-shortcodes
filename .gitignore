@@ -1,2 +1,5 @@
 .sass-cache/
 .idea/
+node_modules/
+package/themewich-shortcodes.zip
+package/
