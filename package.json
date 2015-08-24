@@ -1,0 +1,25 @@
+{
+  "name": "themewich-shortcodes",
+  "version": "1.4.0",
+  "homepage": "http://themewich.com",
+  "description": "A user-friendly shortcode plugin.",
+  "main": "gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://ajgagnon@bitbucket.org/themewich/themewich-shortcodes.git"
+  },
+  "author": "Themewich",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-compass": "^1.0.3",
+    "grunt-contrib-compress": "^0.13.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-npm-install": "^0.2.0",
+    "grunt-version": "^1.0.0"
+  }
+}
