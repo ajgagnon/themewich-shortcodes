@@ -31,16 +31,27 @@
                 text: '',
                 label: 'Insert a Shortcode',
                 tooltip: 'Insert a Shortcode',
-                fixedWidth: true,
+                fixedWidth: false,
                 onselect: function(e) {
+                    var value = e.control.settings.value,
+                        width = e.control.settings.width,
+                        height = e.control.settings.height;
+
+                    // backwards compat
+                    if ( typeof value == undefined ) {
+                        value = e.control._value;
+                        width = e.control._width,
+                        height = e.control._height;
+                    }
+
                     // Check for popup
-                    if (e.control._value == 'divider') {
+                    if (value == 'divider') {
                         tinyMCE.activeEditor.selection.setContent('[tw-divider]' + tinyMCE.activeEditor.selection.getContent() + '[/tw-divider]');
                     } else {
                         editor.windowManager.open({ // Open popup window
-                            file : themewichShortcodesVars.template_url + 'popups/' + e.control._value + '.php', // file that contains HTML for our modal window
-                            width : e.control._width, // size of our window
-                            height : e.control._height, // size of our window
+                            file : themewichShortcodesVars.template_url + 'popups/' + value + '.php', // file that contains HTML for our modal window
+                            width : width, // size of our window
+                            height : height, // size of our window
                             inline : 1
                         }, {
                             plugin_url : url
