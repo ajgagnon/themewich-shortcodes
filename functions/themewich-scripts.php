@@ -33,10 +33,12 @@ if( ! function_exists( 'themewich_plugin_shortcodes_scripts' ) ) {
 		wp_register_script( 'magnificpopup', plugins_url( '/js/jquery.magnific-popup.min.js', dirname(__FILE__) ), 'jquery', '0.9.4', true );
 		wp_register_script( 'isotope', plugins_url( '/js/jquery.isotope.min.js', dirname(__FILE__) ), 'jquery', '1.5.25', true );
 		wp_register_script( 'imagesloaded', plugins_url( '/js/imagesloaded.pkgd.min.js', dirname(__FILE__) ), 'jquery', '3.1.8', true );
-
+		wp_register_script( 'parallax', plugins_url( '/js/parallax.js', dirname(__FILE__) ), 'jquery', '1.3.1', true );
+		
 		wp_enqueue_script( 'modernizr' );
 		wp_enqueue_script( 'magnificpopup' );
 		wp_enqueue_script( 'imagesloaded' );
+		wp_enqueue_script( 'parallax' );
 		wp_enqueue_script( 'isotope' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
 		wp_enqueue_script( 'jquery-ui-core' );

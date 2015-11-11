@@ -1,3 +1,7 @@
+/**
+ * Shortcodes CSS
+ * @version 1.4
+ */
 /* #General Styles
 ================================================== */
 .clear {
@@ -1450,13 +1454,6 @@ a.tw-button.shortcode {
   margin-left: -99999px;
   padding-right: 99999px;
   margin-right: -99999px;
-  background-position: center;
-  background-attachment: fixed;
-  background-color: #222;
-  background-size: cover !important;
-  -webkit-background-size: cover !important;
-  -moz-background-size: cover !important;
-  -o-background-size: cover !important;
   padding-bottom: 75px;
   /* Remove 15px padding for text margins */
   padding-top: 100px;
@@ -1464,9 +1461,6 @@ a.tw-button.shortcode {
   overflow: hidden;
 }
 
-body.chrome .tw-full-bg-image {
-  z-index: -1;
-}
 
 .tw-post-break .tw-opacity {
   position: absolute;
@@ -1478,6 +1472,7 @@ body.chrome .tw-full-bg-image {
 
 .tw-post-break .tw-parallax-content {
   position: relative;
+  z-index: 2;
 }
 
 /* All Mobile Sizes (devices and browser) */
