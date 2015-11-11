@@ -583,8 +583,6 @@ if( ! function_exists( 'themewich_parallax_images ') ) {
             $out .= ($link && $link != '') ? '>' : '';
         }
 
-        
-
         /* Background Color */
         $bgc = ' style="';
         $bgc .= ($bgcolor && $bgcolor != '') ? 'background-color:' . $bgcolor . '; ' : '';
@@ -594,7 +592,7 @@ if( ! function_exists( 'themewich_parallax_images ') ) {
         }
         $bgc .= '"';
 
-        $out .= '<div class="tw-full-bg-image" data-parallax="scroll" data-image-src="'.$image.'" data-z-index="1" data-speed="0"><div class="tw-opacity"'.$bgc.'></div><div class="tw-parallax-content">' . do_shortcode($content) . '</div></div>';
+        $out .= '<div class="tw-full-bg-image tw-parallax-scroll" data-parallax-src="'.$image.'" data-z-index="1" data-speed="0"><div class="tw-opacity"'.$bgc.'></div><div class="tw-parallax-content">' . do_shortcode($content) . '</div></div>';
 
         /* End Link */
         $out .= ($link && $link != '') ? '</a>' : '';

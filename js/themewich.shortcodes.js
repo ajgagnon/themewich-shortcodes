@@ -144,30 +144,30 @@ jQuery.noConflict(); // Set jQuery to NoConflict Mode
 			  runIsotope();
 			});
 		});
-	}
+	};
 
 	$.fn.themewichParallax = function() {
 		var $this = $(this);
 
-			function setWidth() {
-				var postWidth 	= $this.outerWidth(),
-					windowWidth = $(window).width(),
-					padding 	= (windowWidth - postWidth)/2;
+		function setWidth() {
+			var postWidth 	= $this.outerWidth(),
+				windowWidth = $(window).width(),
+				padding 	= (windowWidth - postWidth)/2;
 
-				$('.tw-full-bg-image').css({
-					'margin-left': -padding + 'px',
-					'margin-right': -padding + 'px',
-					'padding-left' : padding + 'px',
-					'padding-right' : padding + 'px'
-				});
-			}
-
-			setWidth();
-
-			$(window).resize(function(){
-				setWidth();
+			$('.tw-full-bg-image').css({
+				'margin-left': -padding + 'px',
+				'margin-right': -padding + 'px',
+				'padding-left' : padding + 'px',
+				'padding-right' : padding + 'px'
 			});
-	}
+		}
+
+		setWidth();
+
+		$(window).resize(function(){
+			setWidth();
+		});
+	};
 
 	// Instantiate the plugins
     $(document).ready(function(){
@@ -190,6 +190,12 @@ jQuery.noConflict(); // Set jQuery to NoConflict Mode
 		if ($.fn.themewichParallax) {
 			$('.tw-post-break').themewichParallax();
 		}
+	    if ($.fn.parallax){
+		    $('.tw-parallax-scroll').each(function() {
+			    var $this = $(this);
+			    $this.parallax({imageSrc: $this.data('parallax-src') });
+		    });
+	    }
 	});
 
 })(jQuery);
