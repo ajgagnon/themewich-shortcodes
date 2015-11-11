@@ -1,2 +1,5 @@
-css/themewich-shortcodes.css.map
 .sass-cache/
+.idea/
+node_modules/
+package/themewich-shortcodes.zip
+package/
