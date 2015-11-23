@@ -190,12 +190,19 @@ jQuery.noConflict(); // Set jQuery to NoConflict Mode
 		if ($.fn.themewichParallax) {
 			$('.tw-post-break').themewichParallax();
 		}
-	    if ($.fn.parallax){
-		    $('.tw-parallax-scroll').each(function() {
-			    var $this = $(this);
-			    $this.parallax({imageSrc: $this.data('parallax-src') });
-		    });
-	    }
+
+		// force chrome to re-render on scroll
+		var scroll = $('.tw-parallax-scroll');
+		function twReRender() {
+			scroll.css({'-webkit-transform' : 'translate3d(0,0,0)'});
+			setTimeout(function(){
+				scroll.css({'-webkit-transform' : 'none'});
+			}, 0 )
+		}
+		twReRender();
+		$(window).scroll(function() {
+			twReRender();
+		});
 	});
 
 })(jQuery);

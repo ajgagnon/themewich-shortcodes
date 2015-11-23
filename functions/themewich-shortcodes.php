@@ -592,7 +592,7 @@ if( ! function_exists( 'themewich_parallax_images ') ) {
         }
         $bgc .= '"';
 
-        $out .= '<div class="tw-full-bg-image tw-parallax-scroll" data-parallax-src="'.$image.'" data-z-index="1" data-speed="0"><div class="tw-opacity"'.$bgc.'></div><div class="tw-parallax-content">' . do_shortcode($content) . '</div></div>';
+        $out .= '<div class="tw-full-bg-image tw-parallax-scroll" data-parallax-src="'.$image.'" style="background-image: url( '.$image.' ); " data-z-index="1" data-speed="0"><div class="tw-opacity"'.$bgc.'></div><div class="tw-parallax-content">' . do_shortcode($content) . '</div></div>';
 
         /* End Link */
         $out .= ($link && $link != '') ? '</a>' : '';

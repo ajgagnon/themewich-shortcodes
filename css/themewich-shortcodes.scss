@@ -1403,6 +1403,13 @@ a.tw-button.shortcode {
   padding-right: 99999px;
   margin-right: -99999px;
   padding-bottom: 75px;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #222;
+  background-size: cover !important;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
   /* Remove 15px padding for text margins */
   padding-top: 100px;
   background-position: center;

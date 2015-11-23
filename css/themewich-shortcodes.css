@@ -1455,12 +1455,18 @@ a.tw-button.shortcode {
   padding-right: 99999px;
   margin-right: -99999px;
   padding-bottom: 75px;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #222;
+  background-size: cover !important;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
   /* Remove 15px padding for text margins */
   padding-top: 100px;
   background-position: center;
   overflow: hidden;
 }
-
 
 .tw-post-break .tw-opacity {
   position: absolute;
@@ -1475,7 +1481,6 @@ a.tw-button.shortcode {
   position: relative;
   z-index: 3;
 }
-
 
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
@@ -1495,3 +1500,5 @@ a.tw-button.shortcode {
     width: 100%;
   }
 }
+
+/*# sourceMappingURL=themewich-shortcodes.css.map */
