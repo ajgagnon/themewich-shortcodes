@@ -198,6 +198,9 @@ jQuery.noConflict(); // Set jQuery to NoConflict Mode
 			});
 		};
 
+		// redraw on load
+		$('.chrome .tw-parallax-scroll').redraw();
+
 		// force chrome to re-render on scroll
 		$(window).scroll(function() {
 			$('.chrome .tw-parallax-scroll').redraw();
