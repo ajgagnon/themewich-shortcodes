@@ -19,6 +19,7 @@
     "grunt-contrib-compass": "^1.0.3",
     "grunt-contrib-compress": "^0.13.0",
     "grunt-contrib-copy": "^0.8.0",
+    "grunt-git": "^0.3.7",
     "grunt-npm-install": "^0.2.0",
     "grunt-version": "^1.0.0"
   }
