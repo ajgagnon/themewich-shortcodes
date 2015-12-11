@@ -14,4 +14,4 @@ require_once( dirname(__FILE__) . '/functions/themewich-tinymce.php' ); // Adds 
 
 // Define plugin directory constant
 define( 'TW_PLUGIN_DIR',   plugins_url() . '/themewich-shortcodes/' );
-define( 'TW_PLUGIN_VER', '1.4.1' );
+define( 'TW_PLUGIN_VER', '1.4.2' );

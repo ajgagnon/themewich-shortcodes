@@ -1,6 +1,6 @@
 {
   "name": "themewich-shortcodes",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "homepage": "http://themewich.com",
   "description": "A user-friendly shortcode plugin.",
   "main": "gruntfile.js",
