@@ -18,7 +18,7 @@
                 {text: 'Divider', value: 'divider'},
                 {text: 'Lightbox', value: 'lightbox_popup', width: '500', height: '370'},
                 {text: 'Posts', value: 'posts_popup', width: '250', height: '375'},
-                {text: 'Pricing Tabe', value: 'pricing_popup', width: '500', height: '715'},
+                {text: 'Pricing Table', value: 'pricing_popup', width: '500', height: '715'},
                 {text: 'Social Icon', value: 'social_popup', width: '250', height: '225'},
                 {text: 'Tabs', value: 'tabs_popup', width: '500', height: '445'},
                 {text: 'Toggle', value: 'toggle_popup', width: '500', height: '375'},
